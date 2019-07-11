@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+*{
+	padding:0;
+	margin:0;
+	font-family: 'Roboto', sans-serif;
+	text-decoration:none;
+	list-style:none;
+	outline:none;
+
+}
+:root{
+	--elemento-header:rgba(255, 199, 43, 0.8);
+	--elemento-font-black:rgba(0,0,0,0.8);
+	--elemento-font-white:#ffffff;
+		--cor-valida:rgba(244, 67, 54, 0.7);
+	--cor-valida-green:rgba(46, 139, 87, 0.8);
+}
+html{
+   background: url(../img/fundo.jpg)no-repeat center center fixed; ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+} 
+.login{
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	height:100vh;
+}
+form{
+	width:80vw;
+	padding:30px 30px;
+	background:rgba(255,255,255,0.85);
+}
+.container-login{
+	display:flex;
+	flex-direction:column;
+}
+label{
+	line-height:2rem;
+}
+input{
+	background:inherit;
+	border:none;
+	border-bottom:1px solid rgba(0,0,0,0.3);
+	padding:0.5rem;
+}
+
+input:focus{
+	border-bottom:1px solid var(--elemento-header);
+}
+input[type='submit'],input[type='button']{
+	margin-top:20px;
+	background:var(--elemento-header);
+	border:none;
+	padding:6px 6px;
+	box-shadow:2px 2px 2px 2px var(--elemento-header);
+	color:var(--elemento-font-black);
+}
+.titulo{
+	height:8vh;		
+}
+.titulo h1,h2{
+	font-weight:bold;
+	text-align:left;
+	font-size:1.2rem;
+}
+.titulo h2{
+	font-weight: inherit;
+}
+.titulo h2{
+	
+	font-size:0.8rem;
+}
+.msg p{
+	padding:10px 10px;
+	background:var(--cor-valida);
+	color:var(--elemento-font-white);
+	margin-top:10px;
+	box-shadow: 1px 1px 1px 1px var(--cor-valida);
+}
+@media screen and (min-width:720px){
+	form{
+		width:28vw;
+	}
+}

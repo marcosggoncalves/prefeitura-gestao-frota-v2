@@ -1,0 +1,19 @@
+{
+  "short_name": "Transporte Escolar Dourados -MS",
+  "name": "Sistema de controle",
+  "description": "Apalicação criado com fim de auxiliar no controle de frota do transporte escolar.",
+  "icons": [
+    {
+      "src": "img/favicon.ico",
+      "sizes": "48x48 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },{
+      "src": "img/icone-2.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    }],
+  "start_url": "/?utm_source=homescreen",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#FFFFFF"
+}
