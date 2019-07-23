@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-	<link rel="manifest" href="pages/public/manifest.json">
-	<?php include 'pages/componentes/head.inc'?>
+	<link rel="manifest" href="<?=base_url('public/manifest.json');?>">
+	<?php include 'public/componentes/head.inc'?>
 	<body>
 		<main>
 			<div class="login">
-				<form name="form" action="php/request?page=Logar" method="post">
+				<form name="form" action="<?=base_url('/entrar');?>" method="post">
 					<div class="titulo">
 						<div>	
 							<h1>Transporte escolar</h1>
@@ -14,7 +14,7 @@
 					</div>
 					<div class="container-login">
 						<label for="Usuário">Usuário</label>
-						<input type="text" name="Usuário" id="Usuário">
+						<input type="text" name="usuario" id="usuario">
 					</div>
 
 					<div class="container-login">
@@ -22,10 +22,17 @@
 						<input type="password" name="senha" id="senha">
 					</div>
 					<div class="container-login">	
-						<input type="button" value="Entrar" onclick="inputs_name_validar('Usuário','senha')">
+						<input type="submit" value="Entrar">
 					</div>
 					<div>
-						<?php include 'pages/componentes/msg.inc' ?>
+						<div class="msg">
+							<?php if(validation_errors() == true): ?>
+								<div class="sucess"><?php echo validation_errors(); ?></div>
+							<?php endif; ?>
+							<?php if($this->session->flashdata('messagem')): ?>
+								<div class="sucess"><p><?=$this->session->flashdata('messagem') ?></p></div>
+							<?php endif;  ?>
+						</div>
 					</div>
 				</form>
 			</div>

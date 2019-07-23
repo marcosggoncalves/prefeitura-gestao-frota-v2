@@ -2,7 +2,7 @@
 	<div class="sub-header">
 		<div class="logo">
 			<div>
-				<img src="../public/img/logo.jpg">
+				<img src="<?=base_url('/public/img/logo.jpg')?>">
 			</div>
 			<div>
 				<h1>Transporte Escolar</h1>
@@ -10,9 +10,15 @@
 			</div>
 		</div>
 		<div class="user">
-			<p><span>Logado:<?php echo mostrar_login()?> </span> <a onclick="janela_mensagem('Sair','conta','../../php/request.php?page=Sair')"><i class="material-icons">exit_to_app</i></a></p>
+			<p><span>Logado:<?=$this->session->logado[0]->nome_usuario?> / <?=$this->session->logado[0]->setor_usuario?> </span> <a onclick="janela_mensagem('Sair','conta','<?=base_url('/sair')?>')"><i class="material-icons">exit_to_app</i></a></p>
 		</div>
 	</div>
 </header>
-
-<?php include'card-alert.inc' ?>
+<?php 
+	if(empty($this->session->userdata('logado'))):
+		$this->session->set_flashdata('messagem','Sessão finalizada, acesso painel novamente.');
+		redirect('/');
+	endif;
+	
+?>
+<?php include'public/componentes/card-alert.inc' ?>

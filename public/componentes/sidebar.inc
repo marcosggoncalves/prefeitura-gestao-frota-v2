@@ -1,4 +1,3 @@
-<?=validar_session();?>
 <div class="navbar">
 		<div class="iconlogo">
 			<a ><i id="btnnavbar" class="material-icons">dehaze</i>Menu</a>
