@@ -14,7 +14,7 @@ $config['uri_protocol']	= 'REQUEST_URI';
 $config['url_suffix'] = '';
 
 
-$config['language']	= 'english';
+$config['language']	= 'portuguese-brazilian';
 
 
 $config['charset'] = 'UTF-8';

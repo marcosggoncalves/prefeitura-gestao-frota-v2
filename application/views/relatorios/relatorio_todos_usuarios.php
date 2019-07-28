@@ -1,41 +1,70 @@
-<!-- controller -->
-    <?php include '../../php/autoload.php'; ?>
-<!-- ---------- -->
-
 <!DOCTYPE html>
 <html>
-	<?php include '../componentes/head_page.inc'?>
-
+	<?php include('public/componentes/head_page.inc');?>
 <body>
-	<?php include '../componentes/header.inc'?>
+	<?php include('public/componentes/header.inc');?>
 	<main>
-		<?php include '../componentes/sidebar.inc'?>
+		<?php include('public/componentes/sidebar.inc');?>
+		<div>
+			<?php include('public/componentes/msg.inc');?>
+		</div>
 		<div class="content">
 			<div  class='resposive_table'>
 				<div class='box-dados'>
 				<div class='box-dados-title'>
 					<h1>Usuários cadastrados</h1>
 				</div>
+				<div>
 					<table id='HTMLtoPDF'>
-						<tr>
-							<th>Código</th>
-							<th>Nome</th>
-							<th>Setor</th>
-							<th>Último acesso</th>
-							<th>Status</th>
-						</tr>
-						<?php
-							$paginas = filter_input(INPUT_GET,'pagina',FILTER_SANITIZE_SPECIAL_CHARS);
-							$pagina = (isset($paginas))? $paginas : 1;
-							todos_usuarios($pagina);
-						?>
+						<thead>
+							<tr>
+								<th>Código</th>
+								<th>Nome</th>
+								<th>Setor</th>
+								<th>Último acesso</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php foreach ($usuarios as $usuario):?>
+								<?php if($usuario->status == 'Inativo'): ?>
+									<tr class="status_indisponível">
+										<td><?=$usuario->id_usuario ?></td>
+										<td><?=$usuario->nome_usuario ?></td>
+										<td><?=$usuario->setor_usuario ?></td>
+										<?php if($usuario->acesso == null): ?>
+											<td>Não houve acesso</td>
+										<?php else: ?>
+											<td><?=$usuario->acesso?></td>
+										<?php endif; ?>	
+										<td><?=$usuario->status ?></td>
+										<td><a href="<?=base_url('usuario/deletar/'.$usuario->id_usuario.'')?>"><i class='material-icons status_indisponível' >delete</i></a></td>
+										<td><a href="<?=base_url('usuario/desbloquear/'.$usuario->id_usuario.'')?>"><i class='material-icons status_indisponível' >lock_open</i></a></td>
+									</tr>
+								<?php else: ?>
+									<tr>
+										<td><?=$usuario->id_usuario ?></td>
+										<td><?=$usuario->nome_usuario ?></td>
+										<td><?=$usuario->setor_usuario ?></td>
+										<?php if($usuario->acesso == null): ?>
+											<td>Não houve acesso</td>
+										<?php else: ?>
+											<td><?=$usuario->acesso?></td>
+										<?php endif; ?>	
+										<td><?=$usuario->status ?></td>
+										<td><a href="<?=base_url('usuario/deletar/'.$usuario->id_usuario.'')?>"><i class='material-icons status_indisponível' >delete</i></a></td>
+										<td><a href="<?=base_url('usuario/bloquear/'.$usuario->id_usuario.'')?>"><i class='material-icons status_diponivel' >lock_open</i></a></td>
+									</tr>
+								<?php endif; ?>
+							<?php endforeach ?>
+						</tbody>
 					</table>
+				</div>
 					<button onclick= 'Gerar_pdf()'>Gerar documento</button>	
 				</div>
 			</div>
 		</div>
 	</main>
-	<?php include '../componentes/footer.inc'?>
-	<script type="text/javascript" src="../public/js/imprimir_mes.js"></script>
+	<?php include('public/componentes/footer.inc');?>
 </body>
 </html>

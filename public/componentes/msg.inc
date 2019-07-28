@@ -1,8 +1,8 @@
-<div class="msg" id="msg">
-	<?php
-		if(isset($_SESSION["msg"]) && $_SESSION["msg"] != '') {
-    		echo '<div class="sucess"><p >'.$_SESSION["msg"].'</p></div>';
-    		$_SESSION["msg"] = '';
-		}
-	 ?>
+<div class="msg">
+	<?php if(validation_errors() == true): ?>
+		<div class="sucess"><?php echo validation_errors(); ?></div>
+	<?php endif; ?>
+	<?php if($this->session->flashdata('messagem')): ?>
+		<div class="sucess"><p><?=$this->session->flashdata('messagem') ?></p></div>
+	<?php endif;  ?>
 </div>

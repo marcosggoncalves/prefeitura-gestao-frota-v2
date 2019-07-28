@@ -5,6 +5,7 @@
 	<?php include('public/componentes/header.inc');?>
 	<main>
 		<?php include('public/componentes/sidebar.inc');?>
+		<?php include 'public/componentes/msg.inc'?>
 		<div class="content">
 			<div class="box-dados">
 				<div class="box-dados-title">

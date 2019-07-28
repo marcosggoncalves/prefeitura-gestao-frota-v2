@@ -4,21 +4,21 @@
 		</div>
 			<nav id="navbar">
 				<ul>
-					<a href="../relatorios/painel"><li >Home</li></a>
+					<a href="<?=base_url('painel')?>"><li >Dashboard</li></a>
 					<li>
 						<a>Registrar</a>
 						<ul>
-							<a href='../forms/cadastrar_saida_manuntencao'><li>Saida manuntenção</li></a>
-							<a href='../forms/cadastrar_troca_oleo'><li>Troca de óleo</li></a>
-							<a href='../forms/cadastrar_retirada_produto'><li>Retirada produto</li></a>
+							<a href="<?=base_url('registrar/saida/manuntencao')?>"><li>Saida manuntenção</li></a>
+							<a href="<?=base_url('registrar/troca/oleo')?>"><li>Troca de oléo</li></a>
+							<a href="<?=base_url('registrar/retirada/produto')?>"><li>Retirada produto</li></a>
 						</ul>
 					</li>
 					<li>
 						<a>Cadastrar</a>
 						<ul>
-							<a href='../forms/cadastrar_veiculo'><li>Veiculos</li></a>
-							<a href='../forms/cadastrar_categoria'><li>Categorias</li></a>
-							<a href='../forms/cadastrar_produto'><li>Produtos</li></a>
+							<a href="<?=base_url('cadastrar/veiculo') ?>"><li>Veiculos</li></a>
+							<a href="<?=base_url('cadastrar/categoria')?>"><li>Categorias</li></a>
+							<a href="<?=base_url('cadastrar/produto')?>"><li>Produtos</li></a>
 						</ul>
 					</li>
 					<li>
@@ -33,18 +33,11 @@
 					</li>
 					<a href='../relatorios/relatorio_filtro'><li>Relatórios mensais</li></a>
 					<li>
-						<a>Configurações</a>
+						<a>Usuários</a>
 						<ul>
-							<a href='../forms/editar_usuario'><li>Dados pessoais</li></a>
-							<?php 
-
-								if($_SESSION["user"]['setor_usuario'] == 'T.I' || $_SESSION["user"]['setor_usuario'] == 'Adm' ){
-									echo "<a href='../forms/cadastrar_usuario'><li>Novo usuário</li></a>
-									<a href='../relatorios/relatorio_todos_usuarios'><li>Usuários</li></a>";
-								}
-
-							 ?>
-							
+							<a href="<?=base_url('usuario/editar/'.$this->session->logado[0]->id_usuario.'')?>"><li>Dados pessoais</li></a>
+							<a href="<?=base_url('usuario/cadastrar')?>"><li>Cadastrar</li></a>
+							<a href="<?=base_url('usuario/todos')?>"><li>Cadastrados</li></a>
 						</ul>
 					</li>
 					

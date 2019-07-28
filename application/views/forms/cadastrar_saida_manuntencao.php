@@ -1,22 +1,17 @@
-
-<!-- controller -->
-    <?php include '../../php/autoload.php'; ?>
-<!-- ---------- -->
-
 <!DOCTYPE html>
 <html>
-	<?php include '../componentes/head_page.inc'?>
+	<?php include('public/componentes/head_page.inc');?>
 <body>
-	<?php include '../componentes/header.inc'?>
+	<?php include('public/componentes/header.inc');?>
 	<main>
-		<?php include '../componentes/sidebar.inc'?>
+		<?php include('public/componentes/sidebar.inc');?>
 		<div class="content">
 			<div class="box-dados">
 				<div class="box-dados-title">
 					<h1>Registrar saida manuntenção veiculo</h1>
 				</div>
 				<div class="form_registrar">
-					<form name="form" action="../../php/request.php?page=Salvar/Manuntenção" method="post">
+					<form name="form" action="<?=base_url('registrar/saida/manuntencao/salvar') ?>" method="post">
 						<div class="container-input">
 							<label for="km_saida_veiculo">Quilometragem saida:</label>
 							<input type="number" name="km_saida_veiculo" id="km_saida_veiculo">
@@ -30,7 +25,9 @@
 							<label for="id_veiculo">Veículo saida para manuntenção:</label>
 							<select name="id_veiculo">
 								<option value=""  >Selecionar veiculo</option>
-								<?=veiculos_status('','','Todos')?>
+								<?php  foreach ($veiculos_servico as $veiculos_disp) :?>
+									<option value="<?=$veiculos_disp->id_veiculo?>"><?=$veiculos_disp->placa_veiculo?></option>
+								<?php endforeach ?>
 							</select>
 						</div>
 						<div class="container-input">
@@ -38,22 +35,24 @@
 							<select name="placa_veiculo">
 								<option value=""  >Selecionar veiculo</option>
 								<option value="Veiculo não substituido">Não substituir</option>
-								<?=veiculos_status(0,'Reserva','');?>
+								<?php  foreach ($veiculos_reserva as $veiculos_disp) :?>
+									<option value="<?=$veiculos_disp->placa_veiculo?>"><?=$veiculos_disp->placa_veiculo?></option>
+								<?php endforeach ?>
 							</select>
 						</div>
 						<div class="conjuntos_btns">
 							<div>
-								<input type="button" name="button" onclick="inputs_name_validar('km_saida_veiculo','id_veiculo','placa_veiculo')" value="Registrar saida">
+								<input type="submit" name="button"  value="Registrar saida">
 							</div>
-						</div>
-						<div>
-							<?php include '../componentes/msg.inc' ?>
 						</div>
 					</form>
 				</div>
 			</div>
-		</div>		
+		</div>	
+		<div>
+			<?php include('public/componentes/msg.inc');?>
+		</div>	
 	</main>
-	<?php include '../componentes/footer.inc'?>
+	<?php include('public/componentes/footer.inc');?>
 </body>
 </html>

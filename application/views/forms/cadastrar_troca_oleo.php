@@ -1,21 +1,17 @@
-<!-- controller -->
-    <?php include '../../php/autoload.php'; ?>
-<!-- ---------- -->
-
 <!DOCTYPE html>
 <html>
-	<?php include '../componentes/head_page.inc'?>
+	<?php include('public/componentes/head_page.inc');?>
 <body>
-	<?php include '../componentes/header.inc'?>
+	<?php include('public/componentes/header.inc');?>
 	<main>
-		<?php include '../componentes/sidebar.inc'?>
+		<?php include('public/componentes/sidebar.inc');?>
 		<div class="content">
 			<div class="box-dados">
 				<div class="box-dados-title">
 					<h1>Registrar troca de óleo veiculo</h1>
 				</div>
 				<div class="form_registrar">
-					<form name="form" action="../../php/request.php?page=Troca/oleo/salvar" method="post">
+					<form name="form" action="<?=base_url('registrar/troca/oleo/salvar') ?>" method="post">
 						<div class="container-input">
 							<label for="km_troca">Quilometragem :</label>
 							<input type="text" name="km_troca" id="km_troca" placeholder="Exemplo 124.09">
@@ -28,22 +24,24 @@
 							<label for="id_veiculo">Veículo:</label>
 							<select name="id_veiculo" id="id_veiculo">
 								<option  value="" >Selecionar veiculo</option>
-								<?= todos_veiculos()?>
+								<?php foreach ($veiculos as $veiculo):?>
+									<option value="<?=$veiculo->id_veiculo?>"><?=$veiculo->placa_veiculo?></option>
+								<?php endforeach ?>
 							</select>
 						</div>
 						<div class="conjuntos_btns">
 							<div>
-								<input type="button" name="button" onclick="inputs_name_validar('data_troca','km_troca','id_veiculo')" value="Registrar Troca">
+								<input type="submit"  value="Registrar Troca">
 							</div>
-						</div>
-						<div>
-							<?php include '../componentes/msg.inc' ?>
 						</div>
 					</form>
 				</div>
 			</div>
-		</div>		
+		</div>	
+		<div>
+			<?php include('public/componentes/msg.inc');?>
+		</div>	
 	</main>
-	<?php include '../componentes/footer.inc'?>
+	<?php include('public/componentes/footer.inc');?>
 </body>
 </html>

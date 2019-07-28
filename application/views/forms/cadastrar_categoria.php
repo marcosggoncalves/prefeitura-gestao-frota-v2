@@ -1,21 +1,17 @@
-<!-- controller -->
-    <?php include '../../php/autoload.php'; ?>
-<!-- ---------- -->
-
 <!DOCTYPE html>
 <html>
-	<?php include '../componentes/head_page.inc'?>
+	<?php include('public/componentes/head_page.inc');?>
 <body>
-	<?php include '../componentes/header.inc'?>
+	<?php include('public/componentes/header.inc');?>
 	<main>
-		<?php include '../componentes/sidebar.inc'?>
+		<?php include('public/componentes/sidebar.inc');?>
 		<div class="content">
 			<div class="box-dados">
 				<div class="box-dados-title">
 					<h1>Cadastrar categoria</h1>
 				</div>
 				<div class="form_registrar">
-					<form name="form" action="../../php/request.php?page=Salvar/categoria" method="post">
+					<form name="form" action="<?=base_url('/cadastrar/categoria/salvar')?>" method="post">
 						<div class="container-input">
 							<label>Nome:</label>
 							<input type="text" name="nome_categoria">
@@ -30,17 +26,17 @@
 						</div>
 						<div class="conjuntos_btns">
 							<div>
-								<input type="button"  name="button" onclick="inputs_name_validar('nome_categoria','status_categoria')" value="Cadastrar categoria">
+								<input type="Submit" value="Cadastrar categoria">
 							</div>
-						</div>
-						<div>
-							<?php include '../componentes/msg.inc' ?>
 						</div>
 					</form>
 				</div>
 			</div>
+		</div>
+		<div>
+			<?php include('public/componentes/msg.inc');?>
 		</div>		
 	</main>
-	<?php include '../componentes/footer.inc'?>
+	<?php include('public/componentes/footer.inc');?>
 </body>
 </html>

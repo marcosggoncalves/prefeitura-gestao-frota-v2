@@ -11,7 +11,7 @@ $autoload['libraries'] = array('database','session','form_validation','paginatio
 $autoload['drivers'] = array();
 
 
-$autoload['helper'] = array('url','form','calc_date');
+$autoload['helper'] = array('url','form','calc_date','date');
 
 
 $autoload['config'] = array();
@@ -20,4 +20,4 @@ $autoload['config'] = array();
 $autoload['language'] = array();
 
 
-$autoload['model'] = array('Dao_login','Dao_painel');
+$autoload['model'] = array('Dao_produto','Dao_veiculo','Dao_categoria','Dao_login','Dao_painel','Dao_manuntencao','Dao_troca','Dao_retirada_produto','Dao_usuario');
