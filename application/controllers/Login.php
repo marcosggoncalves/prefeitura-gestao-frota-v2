@@ -20,6 +20,7 @@ class Login extends CI_Controller {
 			$verify_user = $this->Dao_login->entrar($user,$senha);
 
 			if($verify_user != null){
+				$this->Dao_login->data_acesso($verify_user[0]->id_usuario);
 				$this->session->tempdata();
 				$this->session->set_userdata('logado',$verify_user);
 				redirect('/painel');

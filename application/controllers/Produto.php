@@ -32,4 +32,46 @@ class Produto extends CI_controller{
 			}
 		}
 	}
+	public function relatorio_produtos()
+	{
+		$config = array();
+        $config["base_url"] = base_url() . "relatorio-produtos";
+        $config["total_rows"] = $this->Dao_produto->count_produtos();
+        $config["per_page"] = 15;
+        $config["uri_segment"] = 2;
+        $this->pagination->initialize($config);
+		$page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
+        $data["links"] = $this->pagination->create_links();
+        $data['produtos'] = $this->Dao_produto->produtos($config["per_page"], $page);
+		$this->load->view('relatorios/relatorio_todos_produtos',$data);
+	}
+	public function editar_produto_salvar($id)
+	{
+		$this->form_validation->set_rules('nome_produto','nome produto','required');
+		$this->form_validation->set_rules('quantidade_produto','quantidade produto','required');
+	
+		if($this->form_validation->run() == false){
+			$this->load->view('forms/cadastrar_produto');
+		}else{
+			$produto  = array('nome_produto' => $this->input->post('nome_produto'), 
+							'quantidade_produto'=> $this->input->post('quantidade_produto'),
+							'quantidade_restante'=>$this->input->post('quantidade_produto')
+						);
+			$this->Dao_produto->editar_produto($id,$produto);
+			$this->session->set_flashdata('messagem','Produto alterado com sucesso.');
+				redirect('relatorio-produtos');
+		}
+
+	}
+	public function deletar_produto($id)
+	{
+		$this->Dao_produto->deletar_produto($id);
+		$this->session->set_flashdata('messagem','Produto deletado com sucesso');
+		redirect('relatorio-produtos');
+	}
+	public function editar_produto($id)
+	{
+		$data['consulta'] = $this->Dao_produto->produto($id);
+		$this->load->view('forms/editar_produto',$data);
+	}
 }

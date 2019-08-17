@@ -5,9 +5,7 @@
 	<?php include('public/componentes/header.inc');?>
 	<main>
 		<?php include('public/componentes/sidebar.inc');?>
-		<div>
-			<?php include('public/componentes/msg.inc');?>
-		</div>
+		<?php include('public/componentes/msg.inc');?>
 		<div class="content">
 			<div  class='resposive_table'>
 				<div class='box-dados'>

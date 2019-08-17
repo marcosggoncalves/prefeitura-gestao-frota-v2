@@ -83,22 +83,19 @@ header{
 .box-estatisticas span b{
 	font-weight:inherit;
 }
-.paginação{
-	text-align:center;
-	float:left;
-	margin-bottom:20px;
-	margin-right:4px;
+
+.pagination{
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+.pagination strong{
+	padding:10px 15px;
+	background:var(--white);
+}
+.pagination a{
+	padding:10px 10px;
+	color:var(--white);
 	background:var(--elemento-header);
-	padding:5px 5px;
-	width:18px;
-}
-.paginação a{
-	text-decoration:none;
-	color:var(--elemento-font-black);
-}
-.paginação:hover,button:hover,input[type='submit']:hover,input[type='button']:hover{
-	transition:0.3s;
-	opacity:0.85;
 }
 .user{
 	display:flex;

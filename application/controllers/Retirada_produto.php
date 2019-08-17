@@ -7,6 +7,18 @@ class Retirada_produto extends CI_controller{
 		$data['veiculos'] = $this->Dao_retirada_produto->veiculos();
 		$this->load->view('forms/cadastrar_retirada_produto',$data);
 	}
+	public function produtos_retirados(){
+		$config = array();
+        $config["base_url"] = base_url() . "relatorio-produtos-retirados";
+        $config["total_rows"] = $this->Dao_retirada_produto->count_retirada_produtos();
+        $config["per_page"] = 15;
+        $config["uri_segment"] = 2;
+        $this->pagination->initialize($config);
+		$page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
+        $data["links"] = $this->pagination->create_links();
+        $data['produtos'] = $this->Dao_retirada_produto->todos_produtos_retirados($config["per_page"], $page);
+		$this->load->view('relatorios/relatorio_retirada_produto',$data);
+	}
 	public function retirada_produto_salvar()
 	{
 		$this->form_validation->set_rules('quantidade_retirada','Quantidade de produto retirado ','required');
@@ -37,6 +49,14 @@ class Retirada_produto extends CI_controller{
 				}
 
 				$atualizar_quantidade_restante = $this->Dao_retirada_produto->atualizar_quantidade_restante($this->input->post('id_produto'),$restante_produto);
+				
+				$produto = array(
+					'quantidade_retirada'=>$this->input->post('quantidade_retirada'),
+					'data_retirada_produto'=>date("Y-m-d H:i:s"),
+					'id_produto'=>$this->input->post('id_produto'),
+					'id_veiculo'=>$this->input->post('id_veiculo'));
+
+				$this->Dao_retirada_produto->salvar_retirada_produto($produto);
 
 
 				$this->session->set_flashdata('messagem','Retirada de produto registrado com sucesso.');

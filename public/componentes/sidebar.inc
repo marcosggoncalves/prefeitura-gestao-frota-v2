@@ -24,11 +24,11 @@
 					<li>
 						<a>Relatórios</a>
 						<ul>
-							<a href='../relatorios/relatorio_retirada_produto'><li>Produtos retirados</li></a>
-							<a href='../relatorios/relatorio_saida_manuntencao'><li>Saida manuntenção</li></a>
-							<a href='../relatorios/relatorio_todas_troca_oleo'><li>Troca óleo</li></a>
-							<a href='../relatorios/relatorio_todos_veiculos'><li>Veiculos</li></a>
-							<a href='../relatorios/relatorio_todos_produtos'><li>Produtos</li></a>
+							<a href="<?=base_url('relatorio-produtos-retirados')?>"><li>Produtos retirados</li></a>
+							<a href="<?=base_url('relatorio-saida-manuntencao')?>"><li>Saida manuntenção</li></a>
+							<a href="<?=base_url('relatorio-troca-oleo')?>"><li>Troca óleo</li></a>
+							<a href="<?=base_url('relatorio-veiculos')?>"><li>Veiculos</li></a>
+							<a href="<?=base_url('relatorio-produtos')?>"><li>Produtos</li></a>
 						</ul>
 					</li>
 					<a href='../relatorios/relatorio_filtro'><li>Relatórios mensais</li></a>

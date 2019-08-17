@@ -1,19 +1,21 @@
-<!-- controller -->
-    <?php include '../../php/autoload.php'; ?>
-<!-- ---------- -->
 <!DOCTYPE html>
 <html>
-	<?php include '../componentes/head_page.inc'?>
-
+	<?php include('public/componentes/head_page.inc');?>
 <body>
-	<?php include '../componentes/header.inc'?>
+	<?php include('public/componentes/header.inc');?>
 	<main>
-		<?php include '../componentes/sidebar.inc'?>
+		<?php include('public/componentes/sidebar.inc');?>
+		<?php include 'public/componentes/msg.inc'?>
 		<div class="content">
 			<div  class='resposive_table'>
 				<div class='box-dados'>
 				<div class='box-dados-title'>
 					<h1>Produtos Retirados</h1>
+				</div>
+				<div class="pagination">
+					<?php if(!empty($links)): ?>
+					<p><?=$links; ?></p>
+					<?php endif; ?>	
 				</div>
 					<table id='HTMLtoPDF'>
 						<tr>
@@ -22,17 +24,20 @@
 							<th>Produto</th>
 							<th>Veiculo - reposição</th>
 						</tr>
-						<?php
-							$paginas = filter_input(INPUT_GET,'pagina',FILTER_SANITIZE_SPECIAL_CHARS);
-							$pagina = (isset($paginas))? $paginas : 1;
-							all_produtos_retirados($pagina);
-						?>
+					<?php foreach($produtos as $produto ):?>
+						<tr>
+							<td><?=formatdata($produto->data_retirada_produto)?></td>
+							<td><?=$produto->quantidade_retirada?></td>
+							<td><?=$produto->nome_produto?></td>
+							<td><?=$produto->placa_veiculo?></td>
+						</tr>
+					<?php endforeach;?>
 					</table><button onclick= 'Gerar_pdf()'>Gerar documento</button>	
 				</div>
 			</div>
 		</div>
 	</main>
-	<?php include '../componentes/footer.inc'?>
-	<script type="text/javascript" src="../public/js/imprimir_mes.js"></script>
+	<?php include('public/componentes/footer.inc');?>
+	<script type="text/javascript" src="<?=base_url('public/js/imprimir_mes.js')?>"></script>
 </body>
 </html>

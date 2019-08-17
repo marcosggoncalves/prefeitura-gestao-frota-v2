@@ -11,4 +11,10 @@ class Dao_login extends CI_Model{
 		$this->db->where('senha_usuario',$senha);
 		return $this->db->get()->result();
 	}
+	public function data_acesso($id)
+	{
+		$this->db->set('acesso',date("Y-m-d H:i:s"));
+		$this->db->where('id_usuario',$id);
+		return $this->db->update('usuario');
+	}
 }

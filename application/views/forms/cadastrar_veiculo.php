@@ -5,6 +5,7 @@
 	<?php include('public/componentes/header.inc');?>
 	<main>
 		<?php include('public/componentes/sidebar.inc');?>
+		<?php include('public/componentes/msg.inc');?>
 		<div class="content">
 			<div class="box-dados">
 				<div class="box-dados-title">
@@ -25,7 +26,7 @@
 							<select  name="categoria_veiculo" id="categoria_veiculo">
 								<option  value="" >Selecionar categoria</option>
 								<?php foreach ($categorias as $categoria):?>
-									<option value="<?=$categoria->id_categoria?>"><?=$categoria->nome_categoria?></option>
+									<option value="<?=$categoria->id_categoria?>"><?=$categoria->nome_categoria?>/<?=$categoria->status_categoria?></option>
 								<?php endforeach ?>
 							</select>
 						</div>
@@ -38,9 +39,6 @@
 				</div>
 			</div>
 		</div>
-		<div>
-			<?php include('public/componentes/msg.inc');?>
-		</div>	
 	</main>
 	<?php include('public/componentes/footer.inc');?>
 </body>

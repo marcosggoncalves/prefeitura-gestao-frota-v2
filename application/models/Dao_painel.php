@@ -23,6 +23,7 @@ class Dao_painel extends CI_Model{
 		$this->db->join('veiculos','saida_para_manuntencao.id_veiculo = veiculos.id_veiculo');
 		$this->db->where('status','Aberto');
 		$this->db->order_by("data_saida_veiculo", "desc");
+		$this->db->limit(10);
 		return $this->db->get()->result();
 	}
 	public function products_retirado()
@@ -32,6 +33,7 @@ class Dao_painel extends CI_Model{
 		$this->db->join('produtos','controle_saida_entrada_produtos.id_produto = produtos.id_produto');
 		$this->db->join('veiculos','controle_saida_entrada_produtos.id_veiculo = veiculos.id_veiculo');
 		$this->db->order_by("data_retirada_produto", "desc");
+		$this->db->limit(10);
 		return $this->db->get()->result();
 	}
 }

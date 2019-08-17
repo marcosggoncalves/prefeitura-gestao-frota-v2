@@ -1,19 +1,21 @@
-<!-- controller -->
-    <?php include '../../php/autoload.php'; ?>
-<!-- ---------- -->
 <!DOCTYPE html>
 <html>
-	<?php include '../componentes/head_page.inc'?>
-
+	<?php include('public/componentes/head_page.inc');?>
 <body>
-	<?php include '../componentes/header.inc'?>
+	<?php include('public/componentes/header.inc');?>
 	<main>
-		<?php include '../componentes/sidebar.inc'?>
+		<?php include('public/componentes/sidebar.inc');?>
+		<?php include 'public/componentes/msg.inc'?>
 		<div class="content">
 			<div  class='resposive_table'>
 				<div class='box-dados'>
 				<div class='box-dados-title'>
 					<h1>Trocas de óleos</h1>
+				</div>
+				<div class="pagination">
+					<?php if(!empty($links)): ?>
+					<p><?=$links; ?></p>
+					<?php endif; ?>	
 				</div>
 					<table id='HTMLtoPDF'>
 							<tr>
@@ -23,18 +25,26 @@
 							<th>Veículo</th>
 							<th>Próxima Troca</th>
 						</tr>
-						<?php
-							$paginas = filter_input(INPUT_GET,'pagina',FILTER_SANITIZE_SPECIAL_CHARS);
-							$pagina = (isset($paginas))? $paginas : 1;
-							all_troca_oleo($pagina);
-						?>
+						<tr>
+							<?php foreach ($consulta as $troca):?>
+							<tr>
+								<td><?=$troca->id_controle_troca_oleo ?></td>
+								<td><?=$troca->km_troca ?></td>
+								<td><?=formatdata($troca->data_troca)?></td>
+								<td><?=$troca->placa_veiculo ?></td>
+								<td>Não definida</td>
+								<td><a href="<?=base_url("troca-oleo-editar-km/{$troca->id_controle_troca_oleo}");?>"><i class='material-icons'  title='Visualizar informações registrada na saida para manuntenção . '>edit</i></a></td>
+				 				<td><a onClick='janela_mensagem("Remover","registro de troca de oleo","<?=base_url("troca-oleo-deletar/{$troca->id_controle_troca_oleo}");?>")'><i class='material-icons status_indisponível' title='Remover saida manuntenção registrada. ' >delete</i></a></td>
+							</tr>
+							<?php endforeach; ?>
+						</tr>
+						
 					</table>
 					<button onclick= ' Gerar_pdf()'>Gerar documento</button>
 				</div>
 			</div>
 		</div>
 	</main>
-	<?php include '../componentes/footer.inc'?>
-	<script type="text/javascript" src="../public/js/imprimir_mes.js"></script>
+	<?php include('public/componentes/footer.inc');?>
 </body>
 </html>

@@ -5,7 +5,7 @@
 	<?php include('public/componentes/header.inc');?>
 	<main>
 		<?php include('public/componentes/sidebar.inc');?>
-		<?php include 'public/componentes/msg.inc'?>
+			<?php include 'public/componentes/msg.inc'?>
 		<div class="content">
 			<div class="box-dados">
 				<div class="box-dados-title">
@@ -44,7 +44,7 @@
 							<tr>
 								<td><?=$manuntencao->veiculo_substituicao ?></td>
 								<td><?=$manuntencao->placa_veiculo?></td>
-								<td><?=$manuntencao->data_saida_veiculo ?></td>
+								<td><?=formatdata($manuntencao->data_saida_veiculo) ?></td>
 								<td><?=data_diferença($manuntencao->data_saida_veiculo,date('Y-m-d H:i:s')) ?></td>
 								<td><?=$manuntencao->status ?></td>
 							</tr>
@@ -65,7 +65,7 @@
 					</tr>
 					<?php foreach ($produtos_retirado_lista as $produtos):?>
 							<tr>
-								<td><?=$produtos->data_retirada_produto ?></td>
+								<td><?=formatdata($produtos->data_retirada_produto) ?></td>
 								<td><?=$produtos->quantidade_retirada ?></td>
 								<td><?=$produtos->nome_produto ?></td>
 								<td><?=$produtos->placa_veiculo ?></td>
@@ -76,6 +76,6 @@
 		</div>		
 	</main>
 	<?php include('public/componentes/footer.inc');?>
-	 <script src="<?=base_url(' public/js/contador.js') ?>"></script>
+	 <script src="<?=base_url('/public/js/contador.js') ?>"></script>
 </body>
 </html>

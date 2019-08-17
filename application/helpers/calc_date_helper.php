@@ -10,3 +10,17 @@ function data_diferença($data1,$data2){
 	 
 	 return $thoras =  ($diff->days) . ' - Dias';
 }
+function diferença_km($km1,$km2){
+	$diferenca = ceil($km1 - $km2);
+	if($diferenca < 0){
+		$diferenca = $diferenca * -1;
+	}
+	return $diferenca. ' - Km aproximado';
+}
+function formatdata($datatime){
+	if($datatime == null){
+	  	return 'Veiculo não retorno';
+	}else{
+		return (new DateTime($datatime))->format('d/m/Y H:i:s');	
+	}
+}

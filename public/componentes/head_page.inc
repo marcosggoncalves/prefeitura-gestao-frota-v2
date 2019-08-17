@@ -8,6 +8,6 @@
 	 <script src="<?=base_url('/public/js/alert.js')?>"></script>
 	<link rel="icon" href="<?=base_url('/public/img/icone-2.png')?>" type="image/png">
 	<script src="<?=base_url('/public/js/jspdf.min.js')?>"></script>
-	<script src="<?=base_url('/public/js/spdf.plugin.autotable.js')?>"></script>
-	<script src="<?=base_url('/public/js/js/PDF.js')?>"></script>
+	<script src="<?=base_url('/public/js/jspdf.plugin.autotable.js')?>"></script>
+	<script src="<?=base_url('/public/js/PDF.js')?>"></script>
 </head>
