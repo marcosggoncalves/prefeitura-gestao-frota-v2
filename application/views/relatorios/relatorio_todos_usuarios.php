@@ -33,7 +33,7 @@
 										<?php if($usuario->acesso == null): ?>
 											<td>Não houve acesso</td>
 										<?php else: ?>
-											<td><?=$usuario->acesso?></td>
+											<td><?=formatdata($usuario->acesso)?></td>
 										<?php endif; ?>	
 										<td><?=$usuario->status ?></td>
 										<td><a href="<?=base_url('usuario/deletar/'.$usuario->id_usuario.'')?>"><i class='material-icons status_indisponível' >delete</i></a></td>
@@ -47,7 +47,7 @@
 										<?php if($usuario->acesso == null): ?>
 											<td>Não houve acesso</td>
 										<?php else: ?>
-											<td><?=$usuario->acesso?></td>
+											<td><?=formatdata($usuario->acesso)?></td>
 										<?php endif; ?>	
 										<td><?=$usuario->status ?></td>
 										<td><a href="<?=base_url('usuario/deletar/'.$usuario->id_usuario.'')?>"><i class='material-icons status_indisponível' >delete</i></a></td>
