@@ -21,6 +21,7 @@ class Troca extends CI_controller{
 			$save = $this->Dao_troca->salvar_troca_oleo($this->input->post());
 
 			if($save){
+				registra_log($this->session->logado[0]->nome_usuario.' registrou troca de oleo: '.$this->input->post('id_veiculo'),'registro de dados');
 				$this->session->set_flashdata('messagem','Troca de óleo registrada com sucesso.');
 				redirect('/painel');
 			}else{
@@ -45,11 +46,12 @@ class Troca extends CI_controller{
 	public function deletar_troca($id)
 	{
 		$this->Dao_troca->deletar_troca($id);
-		$this->session->set_flashdata('messagem','Registro de troca de oleo deletado com sucesso.');
+		$this->session->set_flashdata('messagem',' Registro de troca de oleo deletado com sucesso.');
 		redirect('relatorio-troca-oleo');
 	}
 	public function editar_troca_oleo($id)
 	{
+		registra_log($this->session->logado[0]->nome_usuario.' deletou registro de troca de oleo: '.$id,'exclusão de dados');
 		$data['consulta'] = $this->Dao_troca->troca_oleo($id);
 		$this->load->view('forms/editar_troca_oleo',$data);
 	}
@@ -61,6 +63,7 @@ class Troca extends CI_controller{
 			$data['consulta'] = $this->Dao_troca->troca_oleo($id);
 			$this->load->view('forms/editar_troca_oleo',$data);
 		}else{
+			registra_log($this->session->logado[0]->nome_usuario.' edição do registro de troca de oleo: '.$id,'edição de dados');
 			$this->Dao_troca->troca_oleo_salvar($id,$this->input->post('km_troca'));
 			$this->session->set_flashdata('messagem','Registro de troca de oleo alterado com sucesso.');
 			redirect('relatorio-troca-oleo');

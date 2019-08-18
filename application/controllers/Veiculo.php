@@ -27,6 +27,7 @@ class Veiculo extends CI_controller{
 			$save = $this->Dao_veiculo->salvar_veiculo($veiculo);
 
 			if($save){
+				registra_log($this->session->logado[0]->nome_usuario.' cadastrou novo veiculo: '.$this->input->post('placa_veiculo'),'inserção de dados');
 				$this->session->set_flashdata('messagem','Veiculo cadastrado com sucesso');
 				redirect('/painel');
 			}else{
@@ -50,6 +51,7 @@ class Veiculo extends CI_controller{
 	}
 	public function deletar_veiculo($id)
 	{
+		registra_log($this->session->logado[0]->nome_usuario.' deletou o veiculo: '.$id,'exclusão de dados');
 		$this->Dao_veiculo->deletar_veiculo($id);
 		$this->session->set_flashdata('messagem','Veiculo deletado com sucesso.');
 		redirect('relatorio-veiculos');
@@ -71,6 +73,7 @@ class Veiculo extends CI_controller{
 			$data['consulta'] = $this->Dao_veiculo->veiculo($id);
 			$this->load->view('forms/editar_veiculo',$data);
 		}else{
+			registra_log($this->session->logado[0]->nome_usuario.' editou o veiculo: '.$id,'edição de dados');
 			$this->Dao_veiculo->editar_veiculos($this->input->post(),$id);
 			$this->session->set_flashdata('messagem',' Dados do veiculo alterado com sucesso.');
 			redirect('relatorio-veiculos');

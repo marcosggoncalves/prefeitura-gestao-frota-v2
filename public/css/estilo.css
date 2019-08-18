@@ -365,6 +365,14 @@ input[type='submit'],input[type='button']{
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
 }
+.logs{
+	border-radius:5px;
+	background:#dcdcdc;
+	padding: 20px 20px;
+}
+.logs p{
+	padding:5px 0;
+}
 @media screen and (min-width:720px){
 
 	main,

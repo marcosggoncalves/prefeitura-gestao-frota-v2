@@ -13,6 +13,7 @@ class Categoria extends CI_controller{
 		if($this->form_validation->run() == false){
 			$this->load->view('forms/cadastrar_categoria');
 		}else{
+			registra_log($this->session->logado[0]->nome_usuario.' cadastrou a categoria: '.$this->input->post('nome_categoria').'/'.$this->input->post('status_categoria'),'inserção de dados');
 
 			$save = $this->Dao_categoria->salvar_categoria($this->input->post());
 

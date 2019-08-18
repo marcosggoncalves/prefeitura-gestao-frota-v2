@@ -20,6 +20,7 @@ class Login extends CI_Controller {
 			$verify_user = $this->Dao_login->entrar($user,$senha);
 
 			if($verify_user != null){
+				registra_log($this->input->post('usuario').' efetou login no sistema','acesso sistema');
 				$this->Dao_login->data_acesso($verify_user[0]->id_usuario);
 				$this->session->tempdata();
 				$this->session->set_userdata('logado',$verify_user);
@@ -32,6 +33,7 @@ class Login extends CI_Controller {
 	}
 	public function encerrar_session()
 	{
+		registra_log($this->session->logado[0]->nome_usuario.' encerrou sessão no sistema','acesso sistema');
 		$this->session->sess_destroy();
 		redirect('/');
 	}

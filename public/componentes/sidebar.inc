@@ -39,7 +39,7 @@
 							<a href="<?=base_url('usuario/todos')?>"><li>Cadastrados</li></a>
 						</ul>
 					</li>
-					
+					<a href="<?=base_url('config/logs')?>"><li>Logs</li></a>
 				</ul>
 			</nav>
 		</div>

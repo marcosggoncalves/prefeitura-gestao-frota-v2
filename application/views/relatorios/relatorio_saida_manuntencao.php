@@ -6,6 +6,26 @@
 	<main>
 		<?php include('public/componentes/sidebar.inc');?>
 		<?php include 'public/componentes/msg.inc'?>
+		<!-- <div class="content">
+			<details>
+				<summary>Filtrar registros</summary>
+				<form>
+					<div class="container-input">
+						<label id="tipo_pesquisa">Tipo pesquisa</label>
+						<select name="tipo_pesquisa"></select>
+					</div>
+					<div class="container-input">
+						<label id="pesquisa">Pesquisa</label>
+						<input type="text" name="pesquisa">
+					</div>
+					<div class="conjuntos_btns">
+						<div>
+							<input type="submit"  value="Pesquisar registros">
+						</div>
+					</div>
+				</form>
+			</details>
+		</div> -->
 		<div class="content">
 			<div  class='resposive_table'>
 				<div class='box-dados'>

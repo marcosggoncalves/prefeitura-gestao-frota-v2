@@ -28,7 +28,7 @@ class Usuario extends CI_controller{
 						'status' =>'Ativo',
 						'acesso' =>date("Y-m-d H:i:s")
 					);
-
+			registra_log($this->session->logado[0]->nome_usuario.' editou o usuário: '.$id,'edição de dados');
 			$this->Dao_usuario->editar_usuario($id,$usuario);
 			$this->session->set_flashdata('messagem','Informações do usuário salvo com sucesso.');
 			redirect('/painel');
@@ -62,6 +62,7 @@ class Usuario extends CI_controller{
 			$save = $this->Dao_usuario->salvar_usuario($usuario);
 
 			if($save){
+				registra_log($this->session->logado[0]->nome_usuario.' cadastrou o usuário: '.$this->input->post('nome_user'),'inserção de dados');
 				$this->session->set_flashdata('messagem','Usuário salvo com sucesso.');
 				redirect('/painel');
 			}else{
@@ -72,18 +73,21 @@ class Usuario extends CI_controller{
 	}
 	public function bloquear_usuario($id)
 	{
+		registra_log($this->session->logado[0]->nome_usuario.' bloqueou o usuário: '.$id,'bloqueou');
 		$this->Dao_usuario->status_usuario($id,'Inativo');
 		$this->session->set_flashdata('messagem','Usuário bloqueado, código:'.$id.'');
 		redirect('/usuario/todos');
 	}
 	public function desbloquear_usuario($id)
 	{	
+		registra_log($this->session->logado[0]->nome_usuario.' desbloqueou o usuário: '.$id,'desbloqueou');
 		$this->Dao_usuario->status_usuario($id,'Ativo');
 		$this->session->set_flashdata('messagem','Usuário desbloqueado, código:'.$id.'');
 		redirect('/usuario/todos');
 	}
 	public function deletar_usuario($id)
 	{
+		registra_log($this->session->logado[0]->nome_usuario.' deletou o usuário: '.$id,'exclusão de dados');
 		$this->Dao_usuario->deletar_usuario($id);
 		$this->session->set_flashdata('messagem','Usuário deletado com sucesso');
 		redirect('/usuario/todos');

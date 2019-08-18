@@ -96,3 +96,9 @@ $route['veiculo-deletar/(:any)'] = 'veiculo/deletar_veiculo/$1';
 $route['troca-oleo-editar-km/(:any)'] = 'troca/editar_troca_oleo/$1';
 $route['troca-oleo-editar-km-salvar/(:any)'] = 'troca/editar_troca_oleo_salvar/$1';
 $route['troca-oleo-deletar/(:any)'] = 'troca/deletar_troca/$1';
+
+
+//logs
+
+
+$route['config/logs'] = 'logs';
