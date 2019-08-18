@@ -29,10 +29,6 @@ main{
 	display:block;
 }
 
-.col-filter{
-	display:flex;
-	flex-direction:column;
-}
 :root{
 	--elemento-header:rgba(255, 199, 43, 0.42);
 	--elemento-font-black:rgba(0,0,0,0.8);

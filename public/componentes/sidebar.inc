@@ -31,7 +31,6 @@
 							<a href="<?=base_url('relatorio-produtos')?>"><li>Produtos</li></a>
 						</ul>
 					</li>
-					<a href='../relatorios/relatorio_filtro'><li>Relatórios mensais</li></a>
 					<li>
 						<a>Usuários</a>
 						<ul>
