@@ -371,6 +371,7 @@ input[type='submit'],input[type='button']{
 	padding: 20px 20px;
 }
 .logs p{
+	font-size: 0.7rem;
 	padding:5px 0;
 }
 @media screen and (min-width:720px){
@@ -474,5 +475,8 @@ input[type='submit'],input[type='button']{
 	.relatorios_mensais form{
 		flex-direction:row;
 		
+	}
+	.logs p{
+		font-size: 1rem;
 	}
 }
