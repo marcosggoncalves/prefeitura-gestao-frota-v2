@@ -66,6 +66,7 @@ class Categoria extends CI_controller{
 			$data['consulta'] = $this->Dao_categoria->categoria($id);
 			$this->load->view('forms/editar_categoria',$data);
 		}else{
+			registra_log($this->session->logado[0]->nome_usuario.' editou categoria de veiculo: '. $id,'edição de dados');
 			$data['consulta'] = $this->Dao_categoria->editar_categoria($id,$this->input->post());
 			$this->session->set_flashdata('messagem','Categoria alterada com sucesso.');
 			redirect('/cadastrar-categoria');

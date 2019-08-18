@@ -20,7 +20,7 @@
 						<div class="container-input">
 							<label>Status</label>
 							<select name="status_categoria">
-								<option  value="<?=$consulta[0]->id_categoria ?>" >Tipo categoria atual: <?=$consulta[0]->status_categoria ?></option>
+								<option  value="<?=$consulta[0]->status_categoria ?>" >Tipo categoria atual: <?=$consulta[0]->status_categoria ?></option>
 								<option>Reserva</option>
 								<option>Serviço</option>
 							</select>
