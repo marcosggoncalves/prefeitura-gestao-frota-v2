@@ -37,9 +37,15 @@ $route['cadastrar/veiculo'] = 'veiculo';
 $route['cadastrar/veiculo/salvar'] = 'veiculo/veiculo_salvar';
 $route['cadastrar/produto'] = 'produto';
 $route['cadastrar/produto/salvar'] = 'produto/produto_salvar';
-$route['cadastrar/categoria'] = 'categoria';
+$route['cadastrar-categoria'] = 'categoria';
+$route['cadastrar-categoria/(:any)'] = 'categoria';
 $route['cadastrar/categoria/salvar'] = 'categoria/categoria_salvar';
 
+// categoria
+
+$route['categoria-editar/(:any)'] = 'categoria/editar_categoria/$1';
+$route['categoria-editar-salvar/(:any)'] = 'categoria/editar_categoria_salvar/$1';
+$route['categoria-deletar/(:any)'] = 'categoria/deletar_categoriao/$1';
 
 
 // Usuários

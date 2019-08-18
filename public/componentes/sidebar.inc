@@ -17,7 +17,7 @@
 						<a>Cadastrar</a>
 						<ul>
 							<a href="<?=base_url('cadastrar/veiculo') ?>"><li>Veiculos</li></a>
-							<a href="<?=base_url('cadastrar/categoria')?>"><li>Categorias</li></a>
+							<a href="<?=base_url('cadastrar-categoria')?>"><li>Categorias</li></a>
 							<a href="<?=base_url('cadastrar/produto')?>"><li>Produtos</li></a>
 						</ul>
 					</li>
