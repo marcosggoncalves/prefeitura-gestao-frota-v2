@@ -21,11 +21,11 @@ class Login extends CI_Controller {
 
 			if($verify_user != null){
 				if($verify_user[0]->status == 'Inativo'){
-					registra_log($this->input->post('usuario').' Tentou acesso ao sistema, porém está bloquado.','acesso sistema');
+					registra_log($this->input->post('usuario').' Tentou acessar o sistema, porém está bloquado.','acesso sistema');
 					$this->session->set_flashdata('messagem','Usuário bloqueado pelo administrador.');
 					redirect('/');
 				}else{
-					registra_log($this->input->post('usuario').' efetou login no sistema','acesso sistema');
+					registra_log($this->input->post('usuario').' efetuou login no sistema','acesso sistema');
 					$this->Dao_login->data_acesso($verify_user[0]->id_usuario);
 					$this->session->tempdata();
 					$this->session->set_userdata('logado',$verify_user);
