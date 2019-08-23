@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-$config['base_url'] = 'http://localhost/Interface_genfro_prefeitura/';
+$config['base_url'] = 'http://localhost/Interface_genfro_prefeitura';
 
 $config['index_page'] = '';
 
