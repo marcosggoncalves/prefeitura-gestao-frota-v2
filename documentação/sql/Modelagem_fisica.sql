@@ -22,8 +22,8 @@ CREATE TABLE usuario (
 	setor_usuario VARCHAR(60),
 	email_usuario VARCHAR(45),
 	telefone_usuario CHAR(11),
-	senha_usuario CHAR(8),
-	status VARCHAR(40),
+	senha_usuario VARCHAR(255),
+	status VARCHAR(100),
 	acesso datetime
 );
 
@@ -58,7 +58,7 @@ CREATE TABLE veiculos (
 	placa_veiculo CHAR(8),
 	id_veiculo INTEGER PRIMARY KEY auto_increment,
 	descrição_veiculo text,
-	status VARCHAR(60),
+	status_veiculo VARCHAR(60),
 	id_categoria INTEGER,
 	FOREIGN KEY(id_categoria) REFERENCES categoria (id_categoria)
 );
