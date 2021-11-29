@@ -21,7 +21,7 @@ class Dao_painel extends CI_Model{
 		$this->db->select('*');
 		$this->db->from('saida_para_manuntencao');
 		$this->db->join('veiculos','saida_para_manuntencao.id_veiculo = veiculos.id_veiculo');
-		$this->db->where('status','Aberto');
+		$this->db->where('saida_para_manuntencao.status','Aberto');
 		$this->db->order_by("data_saida_veiculo", "desc");
 		$this->db->limit(10);
 		return $this->db->get()->result();

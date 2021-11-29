@@ -21,13 +21,13 @@ class Dao_manuntencao extends CI_Model{
 	}
 	public function mudar_status($id,$status)
 	{
-		$this->db->set('status_veiculo',$status);
+		$this->db->set('status',$status);
 		$this->db->where('id_veiculo',$id);
 		return $this->db->update('veiculos');
 	}
 	public function mudar_status_por_placa($placa,$status)
 	{
-		$this->db->set('status_veiculo',$status);
+		$this->db->set('status',$status);
 		$this->db->where('placa_veiculo',$placa);
 		return $this->db->update('veiculos');
 	}

@@ -20,7 +20,7 @@ class Veiculo extends CI_controller{
 			$veiculo = Array(
 				'placa_veiculo'=>$this->input->post('placa_veiculo'),
 				'descricao_veiculo'=>$this->input->post('desc_veiculo'),
-				'status_veiculo'=>'Disponivel',
+				'status'=>'Disponivel',
 				'id_categoria'=>$this->input->post('categoria_veiculo')
 			);
 

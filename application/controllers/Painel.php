@@ -9,8 +9,8 @@ class Painel extends CI_Controller{
 			'produtos_retirado'=>$this->Dao_painel->count_register('controle_saida_entrada_produtos'),
 			'troca_oleo'=>$this->Dao_painel->count_register('controle_troca_oleo'),
 			'saida_manuntencao'=>$this->Dao_painel->count_register('controle_saida_entrada_produtos'),
-			'veiculos_Indisponivel'=>$this->Dao_painel->count_register_where('veiculos','status_veiculo','Indisponivel'),
-			'veiculos_disponivel'=>$this->Dao_painel->count_register_where('veiculos','status_veiculo','Disponivel'),
+			'veiculos_Indisponivel'=>$this->Dao_painel->count_register_where('veiculos','status','Indisponivel'),
+			'veiculos_disponivel'=>$this->Dao_painel->count_register_where('veiculos','status','Disponivel'),
 			'manuntencoes_recentes'=>$this->Dao_painel->recent_maintenances(),
 			'produtos_retirado_lista'=>$this->Dao_painel->products_retirado()
 		);

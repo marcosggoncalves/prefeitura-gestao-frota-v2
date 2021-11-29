@@ -35,11 +35,11 @@ CREATE TABLE controle_troca_oleo (
 );
 
 CREATE TABLE produtos (
-id_produto INTEGER PRIMARY KEY auto_increment,
-nome_produto VARCHAR(100),
-data_produto_recebido DATETIME,
-quantidade_produto INTEGER,
-quantidade_restante INTEGER
+	id_produto INTEGER PRIMARY KEY auto_increment,
+	nome_produto VARCHAR(100),
+	data_produto_recebido DATETIME,
+	quantidade_produto INTEGER,
+	quantidade_restante INTEGER
 );
 
 CREATE TABLE saida_para_manuntencao (
@@ -58,7 +58,7 @@ CREATE TABLE veiculos (
 	placa_veiculo CHAR(8),
 	id_veiculo INTEGER PRIMARY KEY auto_increment,
 	descrição_veiculo text,
-	status_veiculo VARCHAR(60),
+	status VARCHAR(60),
 	id_categoria INTEGER,
 	FOREIGN KEY(id_categoria) REFERENCES categoria (id_categoria)
 );

@@ -23,8 +23,8 @@
 						</div>
 						<div class="container-input">
 							<label>Status:</label>
-							<select name="status_veiculo">
-								<option value="<?=$consulta[0]->status_veiculo ?>">Status atual: <?=$consulta[0]->status_veiculo?></option>
+							<select name="status">
+								<option value="<?=$consulta[0]->status ?>">Status atual: <?=$consulta[0]->status?></option>
 								<option value="Disponivel">Disponivel</option>
 								<option value="Indisponivel">Indisponivel</option>
 							</select>

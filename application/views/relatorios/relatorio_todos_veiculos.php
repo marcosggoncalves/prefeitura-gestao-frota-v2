@@ -31,13 +31,13 @@
 							<td><?=$veiculo->id_veiculo ?></td>
 							<td><?=$veiculo->placa_veiculo ?></td>
 							<td><?=$veiculo->descricao_veiculo?></td>
-							<?php if($veiculo->status_veiculo == 'Disponivel'): ?>
-								<td class='status_diponivel'><?=$veiculo->status_veiculo?></td>
+							<?php if($veiculo->status == 'Disponivel'): ?>
+								<td class='status_diponivel'><?=$veiculo->status?></td>
 							<?php else: ?>
-								<td class='status_indisponível'><?=$veiculo->status_veiculo?></td>
+								<td class='status_indisponível'><?=$veiculo->status?></td>
 							<?php endif; ?>
 							<td><?=$veiculo->nome_categoria?></td>
-							<td><?=$veiculo->status_categoria?></td>
+							<td><?=$veiculo->status?></td>
 							<td><a onClick='janela_mensagem("Remover","veiculo da frota","<?=base_url("veiculo-deletar/{$veiculo->id_veiculo}") ?>")'><i class='material-icons status_indisponível'>delete</i></a></td>
 							<td><a href="<?=base_url("veiculo-editar/{$veiculo->id_veiculo}")?>"><i class='material-icons'>edit</i></a></td>
 						</tr>
