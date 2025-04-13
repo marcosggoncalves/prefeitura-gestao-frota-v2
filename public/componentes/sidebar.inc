@@ -4,7 +4,7 @@
 		</div>
 			<nav id="navbar">
 				<ul>
-					<a href="<?=base_url('painel')?>"><li >Dashboard</li></a>
+					<a href="<?=base_url('painel')?>"><li>Dashboard</li></a>
 					<li>
 						<a>Registrar</a>
 						<ul>
@@ -14,11 +14,12 @@
 						</ul>
 					</li>
 					<li>
-						<a>Cadastrar</a>
+						<a>Cadastro</a>
 						<ul>
 							<a href="<?=base_url('cadastrar/veiculo') ?>"><li>Veiculos</li></a>
 							<a href="<?=base_url('cadastrar-categoria')?>"><li>Categorias</li></a>
 							<a href="<?=base_url('cadastrar/produto')?>"><li>Produtos</li></a>
+							<a href="<?=base_url('usuario/cadastrar')?>"><li>Usuários</li></a>
 						</ul>
 					</li>
 					<li>
@@ -29,14 +30,13 @@
 							<a href="<?=base_url('relatorio-troca-oleo')?>"><li>Troca óleo</li></a>
 							<a href="<?=base_url('relatorio-veiculos')?>"><li>Veiculos</li></a>
 							<a href="<?=base_url('relatorio-produtos')?>"><li>Produtos</li></a>
+							<a href="<?=base_url('usuario/todos')?>"><li>Usuários</li></a>
 						</ul>
 					</li>
 					<li>
-						<a>Usuários</a>
+						<a>Meu Perfil</a>
 						<ul>
 							<a href="<?=base_url('usuario/editar/'.$this->session->logado[0]->id_usuario.'')?>"><li>Dados pessoais</li></a>
-							<a href="<?=base_url('usuario/cadastrar')?>"><li>Cadastrar</li></a>
-							<a href="<?=base_url('usuario/todos')?>"><li>Cadastrados</li></a>
 						</ul>
 					</li>
 					<a href="<?=base_url('config/logs')?>"><li>Logs</li></a>

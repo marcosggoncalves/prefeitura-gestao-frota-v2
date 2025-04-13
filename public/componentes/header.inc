@@ -10,7 +10,7 @@
 			</div>
 		</div>
 		<div class="user">
-			<p><span>Logado:<?=$this->session->logado[0]->nome_usuario?> / <?=$this->session->logado[0]->setor_usuario?> </span> <a onclick="janela_mensagem('Sair','conta','<?=base_url('/sair')?>')"><i class="material-icons">exit_to_app</i></a></p>
+			<p><span><?=$this->session->logado[0]->nome_usuario?> / <?=$this->session->logado[0]->setor_usuario?> </span> <a onclick="janela_mensagem('encerrar','sessão','<?=base_url('/sair')?>')"><i class="material-icons">exit_to_app</i></a></p>
 		</div>
 	</div>
 </header>
