@@ -21,7 +21,7 @@ class Login extends CI_Controller {
 
 			if($verify_user != null){
 				if($verify_user[0]->status == 'Inativo'){
-					registraLog($this->input->post('usuario').' Tentou acessar o sistema, porém está bloquado.','acesso sistema');
+					registraLog($this->input->post('usuario').' Tentou acessar o sistema, porém está bloqueado.','acesso sistema');
 					$this->session->set_flashdata('messagem','Usuário bloqueado pelo administrador.');
 					redirect('/');
 				}else{
