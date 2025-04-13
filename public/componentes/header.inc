@@ -19,6 +19,5 @@
 		$this->session->set_flashdata('messagem','Sessão finalizada, acesso painel novamente.');
 		redirect('/');
 	endif;
-	
 ?>
 <?php include'public/componentes/card-alert.inc' ?>

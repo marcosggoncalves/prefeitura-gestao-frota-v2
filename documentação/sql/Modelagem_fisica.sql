@@ -57,7 +57,7 @@ CREATE TABLE saida_para_manuntencao (
 CREATE TABLE veiculos (
 	placa_veiculo CHAR(8),
 	id_veiculo INTEGER PRIMARY KEY auto_increment,
-	descrição_veiculo text,
+	descricao_veiculo text,
 	status VARCHAR(60),
 	id_categoria INTEGER,
 	FOREIGN KEY(id_categoria) REFERENCES categoria (id_categoria)
@@ -68,3 +68,5 @@ ALTER TABLE controle_saida_entrada_produtos ADD FOREIGN KEY(id_veiculo) REFERENC
 ALTER TABLE controle_troca_oleo ADD FOREIGN KEY(id_veiculo) REFERENCES veiculos (id_veiculo) ON DELETE  CASCADE;
 ALTER TABLE saida_para_manuntencao ADD FOREIGN KEY(id_veiculo) REFERENCES veiculos (id_veiculo) ON DELETE CASCADE;
 
+INSERT INTO `usuario` (`id_usuario`, `nome_usuario`, `setor_usuario`, `email_usuario`, `telefone_usuario`, `senha_usuario`, `status`, `acesso`) VALUES
+(1, 'Marcos Gonçalves', 'T.I', 'marcoslopesg7@gmail.com', '41988170812', '81dc9bdb52d04dc20036dbd8313ed055', 'Ativo', '2025-04-13 19:44:53');

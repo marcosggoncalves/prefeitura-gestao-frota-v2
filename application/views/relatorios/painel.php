@@ -19,7 +19,7 @@
 						<span>Trocas de óleos: <b class="contador"><?=$troca_oleo?></b> </span>
 					</div>
 					<div class="box-numeros-estaticas">
-						<span>Saida Manuntenção: <b class="contador"><?=$saida_manuntencao?></b> </span>
+						<span>Saida manutenção : <b class="contador"><?=$saida_manuntencao?></b> </span>
 					</div>
 					<div class="box-numeros-estaticas">
 						<span>Veiculos Indisponivel: <b class="contador"><?=$veiculos_Indisponivel?></b> </span>
@@ -35,7 +35,7 @@
 					<table>
 						<tr>
 							<th>Veiculo substituto</th>
-							<th>Veiculo manuntenção </th>
+							<th>Veiculo manutenção  </th>
 							<th>Data abertura</th>
 							<th>Oficina</th>
 							<th>Status </th>
@@ -44,8 +44,8 @@
 							<tr>
 								<td><?=$manuntencao->veiculo_substituicao ?></td>
 								<td><?=$manuntencao->placa_veiculo?></td>
-								<td><?=formatdata($manuntencao->data_saida_veiculo) ?></td>
-								<td><?=data_diferença($manuntencao->data_saida_veiculo,date('Y-m-d H:i:s')) ?></td>
+								<td><?=formatData($manuntencao->data_saida_veiculo) ?></td>
+								<td><?=dataDiferenca($manuntencao->data_saida_veiculo,date('Y-m-d H:i:s')) ?></td>
 								<td><?=$manuntencao->status ?></td>
 							</tr>
 						<?php endforeach;?>
@@ -65,7 +65,7 @@
 					</tr>
 					<?php foreach ($produtos_retirado_lista as $produtos):?>
 							<tr>
-								<td><?=formatdata($produtos->data_retirada_produto) ?></td>
+								<td><?=formatData($produtos->data_retirada_produto) ?></td>
 								<td><?=$produtos->quantidade_retirada ?></td>
 								<td><?=$produtos->nome_produto ?></td>
 								<td><?=$produtos->placa_veiculo ?></td>

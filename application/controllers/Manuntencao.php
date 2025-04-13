@@ -22,7 +22,7 @@ class Manuntencao extends CI_controller{
 	}
 	public function salvar_saida_manuntencao(){
 		$this->form_validation->set_rules('km_saida_veiculo','Quilometragem veiculo','required');
-		$this->form_validation->set_rules('desc_manuntencao','Descrição Manuntenção','required');
+		$this->form_validation->set_rules('desc_manuntencao','Descrição manutenção ','required');
 		$this->form_validation->set_rules('id_veiculo','Selecione veiculo','required');
 		$this->form_validation->set_rules('placa_veiculo','Selecione veiculo substituto','required');
 
@@ -44,7 +44,7 @@ class Manuntencao extends CI_controller{
 			$save = $this->Dao_manuntencao->salvar_saida_manuntencao($campos);
 
 			if($save){
-				registra_log($this->session->logado[0]->nome_usuario.'registrou saida para manuntenção','inserção de dados');
+				registraLog($this->session->logado[0]->nome_usuario.'registrou saida para manutenção ','inserção de dados');
 
 				if( $this->input->post('placa_veiculo') != 'Veiculo não substituido'){
 					$this->Dao_manuntencao->mudar_status_por_placa($this->input->post('placa_veiculo'),'Indisponivel');
@@ -52,10 +52,10 @@ class Manuntencao extends CI_controller{
 
 				$this->Dao_manuntencao->mudar_status($this->input->post('id_veiculo'),'Indisponivel');
 
-				$this->session->set_flashdata('messagem','Saida manuntenção registrada com sucesso.');
+				$this->session->set_flashdata('messagem','Saida manutenção  registrada com sucesso.');
 				redirect('/painel');
 			}else{
-				$this->session->set_flashdata('messagem','Não foi possivel registrar saida de manuntenção');
+				$this->session->set_flashdata('messagem','Não foi possivel registrar saida de manutenção ');
 				redirect('/painel');
 			}
 		}
@@ -67,16 +67,16 @@ class Manuntencao extends CI_controller{
 	}
 	public function  saida_manuntencao_deletar($id)
 	{
-		registra_log($this->session->logado[0]->nome_usuario.' deletou registro saida para manuntenção do veiculo: '. $id,'exclusão de dados');
+		registraLog($this->session->logado[0]->nome_usuario.' deletou registro saida para manutenção  do veiculo: '. $id,'exclusão de dados');
 		$this->Dao_manuntencao->deletar_saida_manuntencao($id);
-		$this->session->set_flashdata('messagem','Saida manuntenção deletada com sucesso.');
+		$this->session->set_flashdata('messagem','Saida manutenção  deletada com sucesso.');
 				redirect('/relatorio-saida-manuntencao');
 	}
 	public function alterar_status_saida_manuntencao($id,$status)
 	{
-		registra_log($this->session->logado[0]->nome_usuario.' alterou status do registro saida para manuntenção do veiculo: '. $id,'edição de dados');
+		registraLog($this->session->logado[0]->nome_usuario.' alterou status do registro saida para manutenção  do veiculo: '. $id,'edição de dados');
 		$this->Dao_manuntencao->alterar_status_saida_manuntencao($id,$status);
-		$this->session->set_flashdata('messagem','Registro saida para manuntenção reaberto com sucesso.');
+		$this->session->set_flashdata('messagem','Registro saida para manutenção  reaberto com sucesso.');
 		redirect("saida-manuntencao-finalizar/{$id}");
 	}
 	public function finalizar_saida_manuntencao($id)
@@ -94,7 +94,7 @@ class Manuntencao extends CI_controller{
 			$data['consulta'] = $this->Dao_manuntencao->saida_manuntencao($id);
 			$this->load->view('forms/finalizar_manuntencao',$data);
 		}else{
-			registra_log($this->session->logado[0]->nome_usuario.' finalizou registro de saida para manuntenção do veiculo: '. $id,'fechamento de registro');
+			registraLog($this->session->logado[0]->nome_usuario.' finalizou registro de saida para manutenção  do veiculo: '. $id,'fechamento de registro');
 			$this->Dao_manuntencao->mudar_status_por_placa($this->input->post('placa_veiculo'),'Disponivel');
 			
 			if($this->input->post('substituto_placa_veiculo') != 'Veiculo não substituido'){

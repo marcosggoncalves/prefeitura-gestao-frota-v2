@@ -11,10 +11,10 @@
 				<div class="form_registrar">
 					<form  action="<?=base_url("saida-manuntencao-finalizar-salvar/{$consulta[0]->id_saida_manuntencao}")?>" method="post">
  						<div class="box-dados-title">
-							<h1>Registrar saida manuntenção veiculo <b> - (<?=$consulta[0]->placa_veiculo?>)</b></h1>
+							<h1>Registrar saida manutenção  veiculo <b> - (<?=$consulta[0]->placa_veiculo?>)</b></h1>
 						</div>
 						<div class="container-input">
-							<label >Cód manuntenção:</label>
+							<label >Cód manutenção :</label>
 							<input type="number" name="cod_manuntencao" value="<?=$consulta[0]->id_saida_manuntencao?>" readonly>
 						</div>
 						<div class="container-input">
@@ -41,7 +41,7 @@
 							</div>
 						<?php endif;?>
 						<div class="container-input">
-							<label for="placa_veiculo">Placa veiculo manuntenção:</label>
+							<label for="placa_veiculo">Placa veiculo manutenção :</label>
 							<input type="text" name="placa_veiculo" id="placa_veiculo" value="<?=$consulta[0]->placa_veiculo ?>" readonly >
 						</div>
 						<div class="container-input">
@@ -54,7 +54,7 @@
 						</div>
 						<div class="conjuntos_btns">
 							<div>
-								<input type="submit" value="Finalizar manuntenção">
+								<input type="submit" value="Finalizar manutenção ">
 							</div>
 						</div>
 					</form>

@@ -29,7 +29,7 @@
 							<tr>
 								<td><?=$produto->id_produto ?></td>
 								<td><?=$produto->nome_produto ?></td>
-								<td><?=formatdata($produto->data_produto_recebido) ?></td>
+								<td><?=formatData($produto->data_produto_recebido) ?></td>
 								<td><?=$produto->quantidade_produto ?></td>
 								<td><?=$produto->quantidade_restante ?></td>
 								<?php if($produto->quantidade_produto == $produto->quantidade_restante): ?>

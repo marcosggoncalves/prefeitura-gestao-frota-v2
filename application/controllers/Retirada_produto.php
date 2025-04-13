@@ -47,7 +47,7 @@ class Retirada_produto extends CI_controller{
 				}else{
 					$restante_produto = $produto[0]->quantidade_restante - $this->input->post('quantidade_retirada');
 				}
-				registra_log($this->session->logado[0]->nome_usuario.' fez a retirada do produto: '. $produto[0]->nome_produto.'/quantidade retirada'.$this->input->post('quantidade_retirada') ,'registro de dados');
+				registraLog($this->session->logado[0]->nome_usuario.' fez a retirada do produto: '. $produto[0]->nome_produto.'/quantidade retirada'.$this->input->post('quantidade_retirada') ,'registro de dados');
 				$atualizar_quantidade_restante = $this->Dao_retirada_produto->atualizar_quantidade_restante($this->input->post('id_produto'),$restante_produto);
 				
 				$produto = array(

@@ -55,8 +55,8 @@
 							<td><?=$value->id_categoria?></td>
 							<td><?=$value->nome_categoria?></td>
 							<td><?=$value->status_categoria?></td>
-							<td><a href="<?=base_url("categoria-editar/{$value->id_categoria}") ?>"><i class='material-icons' title='Fechar saida manuntenção registrada. '>edit</i></a></td>
-							 <td><a onClick="janela_mensagem('Remover','Saida manuntenção','<?=base_url("categoria-deletar/{$value->id_categoria}")?>')"><i class='material-icons status_indisponível' title='Remover saida manuntenção registrada. '>delete</i></a></td>
+							<td><a href="<?=base_url("categoria-editar/{$value->id_categoria}") ?>"><i class='material-icons' title='Fechar saida manutenção  registrada. '>edit</i></a></td>
+							 <td><a onClick="janela_mensagem('Remover','Saida manutenção ','<?=base_url("categoria-deletar/{$value->id_categoria}")?>')"><i class='material-icons status_indisponível' title='Remover saida manutenção  registrada. '>delete</i></a></td>
 						</tr>
 					<?php endforeach;?>
 				</table>

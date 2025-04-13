@@ -8,7 +8,7 @@
 					<li>
 						<a>Registrar</a>
 						<ul>
-							<a href="<?=base_url('registrar/saida/manuntencao')?>"><li>Saida manuntenção</li></a>
+							<a href="<?=base_url('registrar/saida/manuntencao')?>"><li>Saida manutenção </li></a>
 							<a href="<?=base_url('registrar/troca/oleo')?>"><li>Troca de oléo</li></a>
 							<a href="<?=base_url('registrar/retirada/produto')?>"><li>Retirada produto</li></a>
 						</ul>
@@ -25,7 +25,7 @@
 						<a>Relatórios</a>
 						<ul>
 							<a href="<?=base_url('relatorio-produtos-retirados')?>"><li>Produtos retirados</li></a>
-							<a href="<?=base_url('relatorio-saida-manuntencao')?>"><li>Saida manuntenção</li></a>
+							<a href="<?=base_url('relatorio-saida-manuntencao')?>"><li>Saida manutenção </li></a>
 							<a href="<?=base_url('relatorio-troca-oleo')?>"><li>Troca óleo</li></a>
 							<a href="<?=base_url('relatorio-veiculos')?>"><li>Veiculos</li></a>
 							<a href="<?=base_url('relatorio-produtos')?>"><li>Produtos</li></a>

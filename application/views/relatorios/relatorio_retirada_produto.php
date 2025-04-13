@@ -26,7 +26,7 @@
 						</tr>
 					<?php foreach($produtos as $produto ):?>
 						<tr>
-							<td><?=formatdata($produto->data_retirada_produto)?></td>
+							<td><?=formatData($produto->data_retirada_produto)?></td>
 							<td><?=$produto->quantidade_retirada?></td>
 							<td><?=$produto->nome_produto?></td>
 							<td><?=$produto->placa_veiculo?></td>

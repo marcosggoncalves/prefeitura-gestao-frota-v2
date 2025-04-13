@@ -13,7 +13,6 @@ class Produto extends CI_controller{
 		if($this->form_validation->run() == false){
 			$this->load->view('forms/cadastrar_produto');
 		}else{
-
 			$produto  = array(
 				'nome_produto' => $this->input->post('nome_produto'), 
 				'data_produto_recebido'=>date("Y-m-d H:i:s"),
@@ -21,11 +20,10 @@ class Produto extends CI_controller{
 				'quantidade_restante'=>$this->input->post('quantidade_produto')
 			);
 
-
 			$save = $this->Dao_produto->salvar_produto($produto);
 
 			if($save){
-				registra_log($this->session->logado[0]->nome_usuario.' cadastrou novo produto: '. $this->input->post('nome_produto'),'inserção de dados');
+				registraLog($this->session->logado[0]->nome_usuario.' cadastrou novo produto: '. $this->input->post('nome_produto'),'inserção de dados');
 				$this->session->set_flashdata('messagem','Produto cadastrada com sucesso.');
 				redirect('/painel');
 			}else{
@@ -55,7 +53,7 @@ class Produto extends CI_controller{
 		if($this->form_validation->run() == false){
 			$this->load->view('forms/cadastrar_produto');
 		}else{
-			registra_log($this->session->logado[0]->nome_usuario.' editou o produto: '. $this->input->post('nome_produto'),'edição de dados');
+			registraLog($this->session->logado[0]->nome_usuario.' editou o produto: '. $this->input->post('nome_produto'),'edição de dados');
 
 			$produto  = array(
 				'nome_produto' => $this->input->post('nome_produto'), 
@@ -71,7 +69,7 @@ class Produto extends CI_controller{
 	}
 	public function deletar_produto($id)
 	{
-		registra_log($this->session->logado[0]->nome_usuario.' deletou o produto: '.$id,'exclusão de dados');
+		registraLog($this->session->logado[0]->nome_usuario.' deletou o produto: '.$id,'exclusão de dados');
 		$this->Dao_produto->deletar_produto($id);
 		$this->session->set_flashdata('messagem','Produto deletado com sucesso');
 		redirect('relatorio-produtos');
