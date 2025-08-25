@@ -36,7 +36,7 @@
 						</div>
 						<div class="container-input">
 							<label for="senha_user">Senha :</label>
-							<input type="text" name="senha_user" id="senha_user">
+							<input type="password" name="senha_user" id="senha_user">
 						</div>
 						<div class="conjuntos_btns">
 							<div>
