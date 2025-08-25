@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-$config['base_url'] = 'http://localhost/prefeitura/';
+$config['base_url'] = 'http://localhost/gestao/';
 
 $config['index_page'] = '';
 

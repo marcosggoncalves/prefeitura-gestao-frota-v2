@@ -26,7 +26,7 @@ class Dao_usuario extends CI_Model{
     }
     public function status_usuario($id,$status)
     {
-        $this->db->set('status',$status);
+        $this->db->set('ativo',$status);
         $this->db->where('id_usuario', $id);
         return $this->db->update('usuario');
     }

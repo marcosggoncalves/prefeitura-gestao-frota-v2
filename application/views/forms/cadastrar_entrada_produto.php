@@ -9,10 +9,10 @@
 		<div class="content">
 			<div class="box-dados">
 				<div class="box-dados-title">
-					<h1>Registrar retirada produto</h1>
+					<h1>Registrar entrada produto</h1>
 				</div>
 				<div class="form_registrar">
-					<form name="form" action="<?=base_url('/registrar/retirada/produto/salvar')?>" method="post">
+					<form name="form" action="<?=base_url('/registrar/entrada/produto/salvar')?>" method="post">
 						<div class="container-input">
 							<label for="quantidade_movimento">Quantidade:</label>
 							<input type="number" name="quantidade_movimento" id="quantidade_movimento">
@@ -26,18 +26,9 @@
 								<?php endforeach ?>
 							</select>
 						</div>
-						<div class="container-input">
-							<label for="id_veiculo">Veículo:</label>
-							<select name="id_veiculo" id="id_veiculo">
-								<option  value="" >Selecionar veiculo</option>
-								<?php foreach ($veiculos as $veiculo):?>
-									<option value="<?=$veiculo->id_veiculo?>"><?=$veiculo->placa_veiculo?></option>
-								<?php endforeach ?>
-							</select>
-						</div>
 						<div class="conjuntos_btns">
 							<div>
-								<input type="submit"  value="Registrar retirada">
+								<input type="submit"  value="Registrar entrada">
 							</div>
 						</div>
 					</form>

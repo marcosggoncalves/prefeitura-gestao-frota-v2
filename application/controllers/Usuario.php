@@ -17,22 +17,23 @@ class Usuario extends CI_controller{
 		$this->form_validation->set_rules('senha_usuario','senha ','required');
 
 		if($this->form_validation->run() == false){
-			$data['usuario'] = $this->Dao_usuario->usuario($id);
-			$this->load->view('forms/editar_usuario',$data);
-		}else{
-			$usuario = array('nome_usuario' =>$this->input->post('nome_usuario') ,
-						'setor_usuario' => $this->input->post('setor_usuario'),
-						'email_usuario' => $this->input->post('email_usuario'), 
-						'telefone_usuario' => $this->input->post('telefone_usuario'),
-						'senha_usuario' =>md5($this->input->post('senha_usuario')),
-						'status' =>'Ativo',
-						'acesso' =>date("Y-m-d H:i:s")
-					);
-			registraLog($this->session->logado[0]->nome_usuario.' editou o usuário: '.$id,'edição de dados');
-			$this->Dao_usuario->editar_usuario($id,$usuario);
-			$this->session->set_flashdata('messagem','Informações do usuário salvo com sucesso.');
-			redirect('/painel');
+			return $this->editar($id);
 		}
+		
+		$usuario = array(
+			'nome_usuario' =>$this->input->post('nome_usuario') ,
+			'setor_usuario' => $this->input->post('setor_usuario'),
+			'email_usuario' => $this->input->post('email_usuario'), 
+			'telefone_usuario' => $this->input->post('telefone_usuario'),
+			'senha_usuario' => md5($this->input->post('senha_usuario')),
+			'acesso' =>date("Y-m-d H:i:s")
+		);
+
+		registraLog($this->session->logado[0]->nome_usuario.' editou o usuário: '.$id,'edição de dados');
+		$this->Dao_usuario->editar_usuario($id,$usuario);
+		$this->session->set_flashdata('messagem','Informações do usuário salvo com sucesso.');
+		
+		redirect('/painel');
 	}
 	public function cadastrar()
 	{
@@ -47,41 +48,40 @@ class Usuario extends CI_controller{
 		$this->form_validation->set_rules('senha_user','senha ','required');
 
 		if($this->form_validation->run() == false){
-			$this->load->view('forms/cadastrar_usuario');
-		}else{
-
-			$usuario = array('nome_usuario' =>$this->input->post('nome_user') ,
-						'setor_usuario' => $this->input->post('setor_user'),
-						'email_usuario' => $this->input->post('email_user'), 
-						'telefone_usuario' => $this->input->post('telefone_user'),
-						'senha_usuario' =>md5($this->input->post('senha_user')),
-						'status' =>'Ativo',
-						'acesso' =>null
-					);
-
-			$save = $this->Dao_usuario->salvar_usuario($usuario);
-
-			if($save){
-				registraLog($this->session->logado[0]->nome_usuario.' cadastrou o usuário: '.$this->input->post('nome_user'),'inserção de dados');
-				$this->session->set_flashdata('messagem','Usuário salvo com sucesso.');
-				redirect('/painel');
-			}else{
-				$this->session->set_flashdata('messagem','Não foi possivel salvar usuário');
-				redirect('/usuario/cadastrar');
-			}
+			return $this->cadastrar_salvar();
 		}
+
+		$usuario = array(
+			'nome_usuario' =>$this->input->post('nome_user') ,
+			'setor_usuario' => $this->input->post('setor_user'),
+			'email_usuario' => $this->input->post('email_user'), 
+			'telefone_usuario' => $this->input->post('telefone_user'),
+			'senha_usuario' =>md5($this->input->post('senha_user')),
+			'acesso' =>null
+		);
+
+		$salvar = $this->Dao_usuario->salvar_usuario($usuario);
+
+		if($salvar){
+			registraLog($this->session->logado[0]->nome_usuario.' cadastrou o usuário: '.$this->input->post('nome_user'),'inserção de dados');
+			$this->session->set_flashdata('messagem','Usuário salvo com sucesso.');
+			return redirect('/painel');
+		} 
+
+		$this->session->set_flashdata('messagem','Não foi possivel salvar usuário');
+		redirect('/usuario/cadastrar');
 	}
 	public function bloquear_usuario($id)
 	{
 		registraLog($this->session->logado[0]->nome_usuario.' bloqueou o usuário: '.$id,'bloqueou');
-		$this->Dao_usuario->status_usuario($id,'Inativo');
+		$this->Dao_usuario->status_usuario($id, 0);
 		$this->session->set_flashdata('messagem','Usuário bloqueado, código:'.$id.'');
 		redirect('/usuario/todos');
 	}
 	public function desbloquear_usuario($id)
 	{	
 		registraLog($this->session->logado[0]->nome_usuario.' desbloqueou o usuário: '.$id,'desbloqueou');
-		$this->Dao_usuario->status_usuario($id,'Ativo');
+		$this->Dao_usuario->status_usuario($id, 1);
 		$this->session->set_flashdata('messagem','Usuário desbloqueado, código:'.$id.'');
 		redirect('/usuario/todos');
 	}

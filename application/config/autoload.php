@@ -20,4 +20,4 @@ $autoload['config'] = array();
 $autoload['language'] = array();
 
 
-$autoload['model'] = array('Dao_produto','Dao_veiculo','Dao_categoria','Dao_login','Dao_painel','Dao_manuntencao','Dao_troca','Dao_retirada_produto','Dao_usuario');
+$autoload['model'] = array('Dao_parametros', 'Dao_produto','Dao_veiculo','Dao_categoria','Dao_login','Dao_painel','Dao_manutencao','Dao_troca','Dao_produto_movimento','Dao_usuario');

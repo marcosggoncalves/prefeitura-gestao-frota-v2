@@ -20,15 +20,20 @@ class Login extends CI_Controller {
 			$verify_user = $this->Dao_login->entrar($user,$senha);
 
 			if($verify_user != null){
-				if($verify_user[0]->status == 'Inativo'){
+				if($verify_user[0]->ativo == 0){
 					registraLog($this->input->post('usuario').' Tentou acessar o sistema, porém está bloqueado.','acesso sistema');
 					$this->session->set_flashdata('messagem','Usuário bloqueado pelo administrador.');
 					redirect('/');
-				}else{
+				}else{	
+					$parametro = $this->Dao_parametros->get_parametro('*');
+
 					registraLog($this->input->post('usuario').' efetuou login no sistema','acesso sistema');
+				
 					$this->Dao_login->data_acesso($verify_user[0]->id_usuario);
 					$this->session->tempdata();
 					$this->session->set_userdata('logado',$verify_user);
+					$this->session->set_userdata('parametros',$parametro[0]);
+
 					redirect('/painel');
 				}
 			}else{

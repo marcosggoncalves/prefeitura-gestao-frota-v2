@@ -23,6 +23,8 @@ $route['registrar/troca/oleo'] = 'troca';
 $route['registrar/troca/oleo/salvar'] = 'troca/troca_oleo_salvar';
 $route['registrar/retirada/produto'] = 'retirada_produto';
 $route['registrar/retirada/produto/salvar'] = 'retirada_produto/retirada_produto_salvar'; 
+$route['registrar/entrada/produto'] = 'retirada_produto/entrada';
+$route['registrar/entrada/produto/salvar'] = 'retirada_produto/entrada_produto_salvar'; 
 
 
 // cadastrar
@@ -52,8 +54,8 @@ $route['usuario/deletar/(:any)'] ='usuario/deletar_usuario/$1';
 
 
 //relatorios
-$route['relatorio-produtos-retirados'] = 'retirada_produto/produtos_retirados';
-$route['relatorio-produtos-retirados/(:num)'] = 'retirada_produto/produtos_retirados';
+$route['relatorio-produtos-movimetacoes'] = 'retirada_produto/produtos_movimentacoes';
+$route['relatorio-produtos-movimetacoes/(:num)'] = 'retirada_produto/produtos_movimentacoes';
 $route['relatorio-saida-manuntencao'] = 'manuntencao/relatorio_saida_manuntencao';
 $route['relatorio-saida-manuntencao/(:num)'] = 'manuntencao/relatorio_saida_manuntencao';
 $route['relatorio-troca-oleo'] = 'troca/relatorio_troca_oleo';
@@ -88,6 +90,9 @@ $route['troca-oleo-editar-km/(:any)'] = 'troca/editar_troca_oleo/$1';
 $route['troca-oleo-editar-km-salvar/(:any)'] = 'troca/editar_troca_oleo_salvar/$1';
 $route['troca-oleo-deletar/(:any)'] = 'troca/deletar_troca/$1';
 
+// parametros
+$route['parametros'] = 'parametros';
+$route['parametros/editar/salvar/(:any)'] = 'parametros/editar_salvar/$1';
 
 //logs
 $route['config/logs'] = 'logs';

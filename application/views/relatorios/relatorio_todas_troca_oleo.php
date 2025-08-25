@@ -29,10 +29,10 @@
 							<?php foreach ($consulta as $troca):?>
 							<tr>
 								<td><?=$troca->id_controle_troca_oleo ?></td>
-								<td><?=$troca->km_troca ?></td>
+								<td><?=$troca->km_troca . '(KM)' ?></td>
 								<td><?=formatData($troca->data_troca)?></td>
 								<td><?=$troca->placa_veiculo ?></td>
-								<td>Não definida</td>
+								<td><?=!empty($troca->proxima_troca) ? $troca->proxima_troca . '(KM)' : 'N.D'?></td>
 								<td><a href="<?=base_url("troca-oleo-editar-km/{$troca->id_controle_troca_oleo}");?>"><i class='material-icons'  title='Visualizar informações registrada na saida para manutenção  . '>edit</i></a></td>
 				 				<td><a onClick='janela_mensagem("Remover","registro de troca de oleo","<?=base_url("troca-oleo-deletar/{$troca->id_controle_troca_oleo}");?>")'><i class='material-icons status_indisponível' title='Remover saida manutenção  registrada. ' >delete</i></a></td>
 							</tr>

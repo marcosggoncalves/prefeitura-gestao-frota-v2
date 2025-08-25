@@ -13,7 +13,7 @@
 				</div>
 				<div class="box-estatisticas">
 					<div class="box-numeros-estaticas">
-						<span>Produtos Retirados: <b class="contador"><?=$produtos_retirado?></b> </span>
+						<span>Movimetações produto: <b class="contador"><?=$produtos_retirado?></b> </span>
 					</div>
 					<div class="box-numeros-estaticas">
 						<span>Trocas de óleos: <b class="contador"><?=$troca_oleo?></b> </span>
@@ -28,51 +28,57 @@
 						<span>Veiculos Disponivel: <b class="contador"><?=$veiculos_disponivel?></b> </span>
 					</div>
 				</div>
-				<div class="box-dados-title">
-					<h1>Manuntenções Recentes (abertas)</h1>
-				</div>
-				<div id="HTMLtoPDF">
-					<table>
-						<tr>
-							<th>Veiculo substituto</th>
-							<th>Veiculo manutenção  </th>
-							<th>Data abertura</th>
-							<th>Oficina</th>
-							<th>Status </th>
-						</tr>
-						<?php foreach ($manuntencoes_recentes as $manuntencao):?>
+				<?php if (!empty($manuntencoes_recentes)) :?>
+					<div class="box-dados-title">
+						<h1>Manutenções Recentes (abertas)</h1>
+					</div>
+					<div id="HTMLtoPDF">
+						<table>
 							<tr>
-								<td><?=$manuntencao->veiculo_substituicao ?></td>
-								<td><?=$manuntencao->placa_veiculo?></td>
-								<td><?=formatData($manuntencao->data_saida_veiculo) ?></td>
-								<td><?=dataDiferenca($manuntencao->data_saida_veiculo,date('Y-m-d H:i:s')) ?></td>
-								<td><?=$manuntencao->status ?></td>
+								<th>Veiculo substituto</th>
+								<th>Veiculo manutenção  </th>
+								<th>Data abertura</th>
+								<th>Oficina</th>
+								<th>Status </th>
 							</tr>
-						<?php endforeach;?>
-					</table>
-				</div>
+							<?php foreach ($manuntencoes_recentes as $manuntencao):?>
+								<tr>
+									<td><?=$manuntencao->veiculo_substituicao ?></td>
+									<td><?=$manuntencao->placa_veiculo?></td>
+									<td><?=formatData($manuntencao->data_saida_veiculo) ?></td>
+									<td><?=dataDiferenca($manuntencao->data_saida_veiculo,date('Y-m-d H:i:s')) ?></td>
+									<td><?=$manuntencao->status ?></td>
+								</tr>
+							<?php endforeach;?>
+						</table>
+					</div>
+				<?php endif; ?>
 			</div>
+			<?php if (!empty($produtos_movimentacoes)) :?>
 			<div class="box-dados">
 				<div class="box-dados-title">
-					<h1>Produtos Retirados</h1>
+					<h1>Últimas Movimentações Estoque</h1>
 				</div>
 				<table>
 					<tr>
-						<th>Data Retirada</th>
-						<th>Quantidade retirada</th>
+						<th>Data</th>
+						<th>Quantidade</th>
 						<th>Produto</th>
 						<th>Veiculos</th>
+						<th>Movimentação</th>
 					</tr>
-					<?php foreach ($produtos_retirado_lista as $produtos):?>
-							<tr>
-								<td><?=formatData($produtos->data_retirada_produto) ?></td>
-								<td><?=$produtos->quantidade_retirada ?></td>
-								<td><?=$produtos->nome_produto ?></td>
-								<td><?=$produtos->placa_veiculo ?></td>
-							</tr>
-						<?php endforeach;?>
+					<?php foreach ($produtos_movimentacoes as $produtos):?>
+						<tr>
+							<td><?=formatData($produtos->data_movimento) ?></td>
+							<td><?=$produtos->quantidade_movimento ?></td>
+							<td><?=$produtos->nome_produto ?></td>
+							<td><?= empty($produtos->placa_veiculo) ? 'N.D' : $produtos->placa_veiculo ?></td>
+							<td><?=$produtos->tipo_movimentacao == 0 ? 'Saida' : 'Entrada' ?></td>
+						</tr>
+					<?php endforeach;?>
 				</table>
 			</div>	
+			<?php endif; ?>
 		</div>		
 	</main>
 	<?php include('public/componentes/footer.inc');?>

@@ -22,7 +22,6 @@
 							<th>Código</th>
 							<th>Produto</th>
 							<th>Data recebido</th>
-							<th>Quantidade cadastradas</th>
 							<th>Quantidade Restante</th>
 						</tr>
 						<?php foreach($produtos as $produto): ?>
@@ -31,11 +30,8 @@
 								<td><?=$produto->nome_produto ?></td>
 								<td><?=formatData($produto->data_produto_recebido) ?></td>
 								<td><?=$produto->quantidade_produto ?></td>
-								<td><?=$produto->quantidade_restante ?></td>
-								<?php if($produto->quantidade_produto == $produto->quantidade_restante): ?>
-									<td><a href="<?=base_url("produto-editar/{$produto->id_produto}") ?>"><i class='material-icons'>edit</i></a></td>
-									<td><a onClick='janela_mensagem("Remover","produto","<?=base_url("produto-deletar/{$produto->id_produto}") ?>")'><i class='material-icons  status_indisponível'>delete</i></a></td>
-								<?php endif; ?>
+								<td><a href="<?=base_url("produto-editar/{$produto->id_produto}") ?>"><i class='material-icons'>edit</i></a></td>
+								<td><a onClick='janela_mensagem("Remover","produto","<?=base_url("produto-deletar/{$produto->id_produto}") ?>")'><i class='material-icons  status_indisponível'>delete</i></a></td>
 							</tr>
 						<?php endforeach; ?>
 					</table>

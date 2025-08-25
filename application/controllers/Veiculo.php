@@ -11,30 +11,31 @@ class Veiculo extends CI_controller{
 		$this->form_validation->set_rules('placa_veiculo','Placa veiculo','required');
 		$this->form_validation->set_rules('desc_veiculo','Descrição veiculo ','required');
 		$this->form_validation->set_rules('categoria_veiculo','Categoria veiculo','required');
+		$this->form_validation->set_rules('lugares','Capacidade de pessoas(lugares)','required');
 
 		if($this->form_validation->run() == false){
-			$data['categorias'] = $this->Dao_veiculo->categorias();
-			$this->load->view('forms/cadastrar_veiculo',$data);
-		}else{
-
-			$veiculo = Array(
-				'placa_veiculo'=>$this->input->post('placa_veiculo'),
-				'descricao_veiculo'=>$this->input->post('desc_veiculo'),
-				'status'=>'Disponivel',
-				'id_categoria'=>$this->input->post('categoria_veiculo')
-			);
-
-			$save = $this->Dao_veiculo->salvar_veiculo($veiculo);
-
-			if($save){
-				registraLog($this->session->logado[0]->nome_usuario.' cadastrou novo veiculo: '.$this->input->post('placa_veiculo'),'inserção de dados');
-				$this->session->set_flashdata('messagem','Veiculo cadastrado com sucesso');
-				redirect('/painel');
-			}else{
-				$this->session->set_flashdata('messagem','Não foi possivel cadastar veiculo');
-				redirect('/cadastrar/veiculo/salvar');
-			}
+			return $this->index();
 		}
+
+		$veiculo = Array(
+			'placa_veiculo'=>$this->input->post('placa_veiculo'),
+			'descricao_veiculo'=>$this->input->post('desc_veiculo'),
+			'status'=>'Disponivel',
+			'lugares' => $this->input->post('lugares'),
+			'id_categoria'=>$this->input->post('categoria_veiculo')
+		);
+
+		$salvar = $this->Dao_veiculo->salvar_veiculo($veiculo);
+
+		if($salvar){
+			registraLog($this->session->logado[0]->nome_usuario.' cadastrou novo veiculo: '.$this->input->post('placa_veiculo'),'inserção de dados');
+			$this->session->set_flashdata('messagem','Veiculo cadastrado com sucesso');
+			return	redirect('/painel');
+		}
+
+		$this->session->set_flashdata('messagem','Não foi possivel cadastar veiculo');
+		
+		redirect('/cadastrar/veiculo/salvar');
 	}
 	public function relatorio_veiculos()
 	{
@@ -69,14 +70,12 @@ class Veiculo extends CI_controller{
 		$this->form_validation->set_rules('id_categoria','Categoria veiculo','required');
 
 		if($this->form_validation->run() == false){
-			$data['categorias'] = $this->Dao_veiculo->categorias();
-			$data['consulta'] = $this->Dao_veiculo->veiculo($id);
-			$this->load->view('forms/editar_veiculo',$data);
-		}else{
-			registraLog($this->session->logado[0]->nome_usuario.' editou o veiculo: '.$id,'edição de dados');
-			$this->Dao_veiculo->editar_veiculos($this->input->post(),$id);
-			$this->session->set_flashdata('messagem',' Dados do veiculo alterado com sucesso.');
-			redirect('relatorio-veiculos');
+			return $this->editar_veiculo($id);
 		}
+		
+		registraLog($this->session->logado[0]->nome_usuario.' editou o veiculo: '.$id,'edição de dados');
+		$this->Dao_veiculo->editar_veiculos($this->input->post(),$id);
+		$this->session->set_flashdata('messagem',' Dados do veiculo alterado com sucesso.');
+		redirect('relatorio-veiculos');
 	}
 }

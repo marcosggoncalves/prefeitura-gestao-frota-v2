@@ -13,10 +13,12 @@
 				</div>
 				<div class="form_registrar">
 					<form name="form" action="<?=base_url('usuario/editar/salvar/'.$usuario[0]->id_usuario.'') ?>" method="post">	
-						<div class="container-input">
-							<label for="id_usuario">ID:</label>
-							<input type="text" name="id_usuario" id="id_usuario" value="<?=$usuario[0]->id_usuario?>" readonly>
-						</div>
+						<?php if (!isset($usuario[0]->id_usuario)) : ?>
+							<div class="container-input">
+								<label for="id_usuario">ID:</label>
+								<input type="text" name="id_usuario" id="id_usuario" value="<?=$usuario[0]->id_usuario?>" readonly>
+							</div>
+						<?php endif;?>
 						<div class="container-input">
 							<label>Nome completo:</label>
 							<input type="text" name="nome_usuario" value="<?=$usuario[0]->nome_usuario?>">

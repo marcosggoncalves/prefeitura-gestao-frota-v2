@@ -24,36 +24,22 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach ($usuarios as $usuario):?>
-								<?php if($usuario->status == 'Inativo'): ?>
-									<tr class="status_indisponível">
-										<td><?=$usuario->id_usuario ?></td>
-										<td><?=$usuario->nome_usuario ?></td>
-										<td><?=$usuario->setor_usuario ?></td>
-										<?php if($usuario->acesso == null): ?>
-											<td>Não houve acesso</td>
-										<?php else: ?>
-											<td><?=formatData($usuario->acesso)?></td>
-										<?php endif; ?>	
-										<td><?=$usuario->status ?></td>
-										<td><a href="<?=base_url('usuario/deletar/'.$usuario->id_usuario.'')?>"><i class='material-icons status_indisponível' >delete</i></a></td>
-										<td><a href="<?=base_url('usuario/desbloquear/'.$usuario->id_usuario.'')?>"><i class='material-icons status_indisponível' >lock_open</i></a></td>
-									</tr>
-								<?php else: ?>
-									<tr>
-										<td><?=$usuario->id_usuario ?></td>
-										<td><?=$usuario->nome_usuario ?></td>
-										<td><?=$usuario->setor_usuario ?></td>
-										<?php if($usuario->acesso == null): ?>
-											<td>Não houve acesso</td>
-										<?php else: ?>
-											<td><?=formatData($usuario->acesso)?></td>
-										<?php endif; ?>	
-										<td><?=$usuario->status ?></td>
-										<td><a href="<?=base_url('usuario/deletar/'.$usuario->id_usuario.'')?>"><i class='material-icons status_indisponível' >delete</i></a></td>
-										<td><a href="<?=base_url('usuario/bloquear/'.$usuario->id_usuario.'')?>"><i class='material-icons status_diponivel' >lock_open</i></a></td>
-									</tr>
-								<?php endif; ?>
+							<?php foreach ($usuarios as $index => $usuario):
+									$usuario->rota = $usuario->ativo == 0 ? 'desbloquear' : 'bloquear';
+								?>
+								<tr class="<?=$usuario->ativo == 0 ? 'status_indisponível' : '' ?>">
+									<td><?=$usuario->id_usuario ?></td>
+									<td><?=$usuario->nome_usuario ?></td>
+									<td><?=$usuario->setor_usuario ?></td>
+									<?php if($usuario->acesso == null): ?>
+										<td>Não houve acesso</td>
+									<?php else: ?>
+										<td><?=formatData($usuario->acesso)?></td>
+									<?php endif; ?>	
+									<td><?=$usuario->ativo == 1 ? 'Ativo' : 'Inativo' ?></td>
+									<td><a href="<?=base_url('usuario/deletar/'.$usuario->id_usuario.'')?>"><i class='material-icons status_indisponível' >delete</i></a></td>
+									<td><a href="<?=base_url('usuario/' .$usuario->rota. '/'.$usuario->id_usuario.'')?>"><i class='material-icons status_indisponível' >lock_open</i></a></td>
+								</tr>
 							<?php endforeach ?>
 						</tbody>
 					</table>

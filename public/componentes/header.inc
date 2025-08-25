@@ -5,8 +5,8 @@
 				<img src="<?=base_url('/public/img/logo.jpg')?>">
 			</div>
 			<div>
-				<h1>Transporte Escolar</h1>
-				<h2>Sistema de controle</h2>
+				<h1><?=$this->session->parametros->titulo_sistema ?></h1>
+				<h2><?=$this->session->parametros->subtitulo_sistema ?></h2>
 			</div>
 		</div>
 		<div class="user">

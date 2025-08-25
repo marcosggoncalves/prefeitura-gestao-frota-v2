@@ -2,26 +2,27 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-class Dao_retirada_produto extends CI_Model{
+class Dao_produto_movimento extends CI_Model{
 	public function __construct(){
 		parent::__construct();
 	}
 	public function count_retirada_produtos(){
-		return $this->db->count_all_results('controle_saida_entrada_produtos');
+		return $this->db->count_all_results('produtos_movimentos');
 	}
 	public function todos_produtos_retirados($inicio,$maximo){
 		$this->db->select('*');
-		$this->db->from('controle_saida_entrada_produtos');
-		$this->db->join('produtos','controle_saida_entrada_produtos.id_produto = produtos.id_produto');
-		$this->db->join('veiculos','controle_saida_entrada_produtos.id_veiculo = veiculos.id_veiculo');
-		$this->db->order_by('controle_saida_entrada_produtos.id_controle_produtos','desc');
+		$this->db->from('produtos_movimentos');
+		$this->db->join('produtos','produtos_movimentos.id_produto = produtos.id_produto');
+		$this->db->join('usuario','produtos_movimentos.id_usuario = usuario.id_usuario');
+		$this->db->join('veiculos','produtos_movimentos.id_veiculo = veiculos.id_veiculo', 'left');
+		$this->db->order_by('data_movimento','desc');
 		$this->db->limit($inicio,$maximo); 
 		return $this->db->get()->result();
 	}
 	public function salvar_retirada_produto($campos)
 	{
 		$this->db->set($campos);
-		return $this->db->insert('controle_saida_entrada_produtos');
+		return $this->db->insert('produtos_movimentos');
 	}
 	public function veiculos()
 	{
@@ -39,7 +40,7 @@ class Dao_retirada_produto extends CI_Model{
 	}
 	public function atualizar_quantidade_restante($id,$quantidade_restante)
     {
-    	$this->db->set('quantidade_restante',$quantidade_restante);
+    	$this->db->set('quantidade_produto',$quantidade_restante);
     	$this->db->where('id_produto', $id);
     	return $this->db->update('produtos');
     }

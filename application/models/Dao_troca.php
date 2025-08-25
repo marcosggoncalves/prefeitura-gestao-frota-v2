@@ -40,9 +40,10 @@ class Dao_troca extends CI_Model{
 		$this->db->order_by('id_controle_troca_oleo','desc');
 		return $this->db->get()->result();
 	}
-	public function troca_oleo_salvar($id,$km)
+	public function troca_oleo_salvar($id,$km, $proxima)
 	{
 		$this->db->set('km_troca',$km);
+		$this->db->set('proxima_troca',$proxima);
 		$this->db->where('id_controle_troca_oleo',$id);
 		return $this->db->update('controle_troca_oleo');
 	}

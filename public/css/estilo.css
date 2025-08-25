@@ -11,7 +11,7 @@
 }
 
 html {
-	background: #fafafa;
+	background: #f3f3f3;
 }
 
 main {
@@ -34,7 +34,7 @@ main {
 	--elemento-font-black: rgba(0, 0, 0, 0.8);
 	--elemento-font-white: rgba(255, 255, 255, 1);
 	--bordar: 3px solid var(--elemento-header);
-	--caixa: 1px 1px 1px 1px #ededed;
+	--caixa: 1px 1px 1px 1px #dddcdc;
 	--cor-valida: rgba(244, 67, 54, 0.6);
 	--cor-valida-green: rgba(46, 139, 87, 0.8);
 }

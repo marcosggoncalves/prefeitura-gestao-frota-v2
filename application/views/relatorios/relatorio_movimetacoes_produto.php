@@ -10,7 +10,7 @@
 			<div  class='resposive_table'>
 				<div class='box-dados'>
 				<div class='box-dados-title'>
-					<h1>Produtos Retirados</h1>
+					<h1>Movimentações Estoque</h1>
 				</div>
 				<div class="pagination">
 					<?php if(!empty($links)): ?>
@@ -19,17 +19,21 @@
 				</div>
 					<table id='HTMLtoPDF'>
 						<tr>
-							<th>Data Retirada</th>
-							<th>Quantidade retirada</th>
+							<th>Data</th>
+							<th>Quantidade</th>
 							<th>Produto</th>
-							<th>Veiculo - reposição</th>
+							<th>Veiculos</th>
+							<th>Movimentação</th>
+							<th>Usuário</th>
 						</tr>
 					<?php foreach($produtos as $produto ):?>
 						<tr>
-							<td><?=formatData($produto->data_retirada_produto)?></td>
-							<td><?=$produto->quantidade_retirada?></td>
-							<td><?=$produto->nome_produto?></td>
-							<td><?=$produto->placa_veiculo?></td>
+							<td><?=formatData($produto->data_movimento) ?></td>
+							<td><?=$produto->quantidade_movimento ?></td>
+							<td><?=$produto->nome_produto ?></td>
+							<td><?= empty($produto->placa_veiculo) ? 'N.D' : $produto->placa_veiculo ?></td>
+							<td><?=$produto->tipo_movimentacao == 0 ? 'Saida' : 'Entrada' ?></td>
+							<td><?=$produto->nome_usuario?></td>
 						</tr>
 					<?php endforeach;?>
 					</table><button onclick= 'Gerar_pdf()'>Gerar documento</button>	

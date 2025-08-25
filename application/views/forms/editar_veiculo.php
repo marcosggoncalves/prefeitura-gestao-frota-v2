@@ -21,6 +21,11 @@
 							<label for="desc_veiculo">Descrição:</label>
 							<input type=text name="descricao_veiculo" id="desc_veiculo" value="<?=$consulta[0]->descricao_veiculo?>"></textarea>
 						</div>
+						</div>
+							<div class="container-input">
+							<label for="lugares">Capacidades(Lugares):</label>
+							<input type="number" name="lugares" id="lugares" value="<?=$consulta[0]->lugares?>">
+						</div>
 						<div class="container-input">
 							<label>Status:</label>
 							<select name="status">
